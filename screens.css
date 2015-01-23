@@ -1,0 +1,57 @@
+	table.tall {
+		border-collapse: collapse;
+		border: solid 1px gray;
+		background-color: white;
+		color:black;
+		font-size:3em;
+		
+	}
+	table.wide{
+		border-collapse: collapse;
+		border: solid 1px gray;
+		background-color: white;
+		color:black;
+		font-size:1em;
+		
+	}
+	TH.label{
+		background: #0055a5;
+		color: white;
+		text-align:left;
+		
+	}
+	
+	TH.rd{
+	text-align:left;
+	border: solid 1px gray;
+	background-color:#6E6E6E;
+	color=#000000;
+	
+	
+	}
+	TD.rd{
+	text-align:left;
+	
+	}
+	
+	.wideTables{
+		width:100%;
+		display:table;
+	}
+	.table1{
+		width:50%;display: table-cell;
+	}
+	
+	.table2 {
+		width: 50%; display: table-cell;
+	}
+	
+	h1.tall{
+		font-size:4em;
+	}
+	
+	.tall{
+		font-size:2em;
+	}
+
+	

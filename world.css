@@ -1,0 +1,189 @@
+
+body{
+	background-color:#80B2CC;
+}
+
+h1{
+	text-align:center;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+li {
+    float: left;
+}
+
+a:link, a:visited {
+    display: block;
+    width: 500px;
+    font-weight: bold;
+    color: #FFFFFF;
+    background-color: #80B2CC;
+    text-align: center;
+    padding: 10px 0px 10px 0px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+a:hover, a:active {
+    background-color: #5A7D8F;
+}
+
+table {
+	border-collapse: collapse;
+	border-radius: 14px;
+}
+
+td, th {
+	border: 1px solid gray;
+	padding: 10px;
+}
+
+table{
+	margin: 0 auto;
+	border: 1px solid gray;
+	padding: 10px;
+}
+
+th{
+	background-color: #80B2CC;
+	color: white;
+}
+
+
+.emph { font-size: 1.5em; }
+.bignum{ font-size: 2.5em; }
+.small{ font-size: .75em; }
+.smallTime{ font-size: .5em; }
+
+
+.line {  }
+
+.block{
+	text-align:center;
+	display:inline-block;
+	padding: 20px;
+ 	border-radius: 25px;
+}
+.speedBlock{
+
+	text-align:center;
+	display:inline-block;
+	padding: 20px;
+ 	border-radius: 25px;
+
+}
+.battBlock{
+
+	text-align:center;
+	display:inline-block;
+	padding: 20px;
+ 	border-radius: 25px;
+
+}
+.cabutable {
+	border:none;
+}
+.SDBlock{
+
+	text-align:center;
+	display:inline-block;
+	padding: 20px;
+ 	border-radius: 25px;
+
+}
+
+.arrowBlock{
+
+	text-align:center;
+	display:inline-block;
+	
+ 	border-radius: 25px;
+
+}
+.lightning_img{
+	color:black;
+	position:absolute;
+	width: 100%;
+	bottom:20px;
+	right:0px;
+}
+
+#logo{
+
+	float:left;
+}
+
+#image{
+	position: relative; 
+}
+
+#SDImage{
+	position: relative; 
+}
+
+#batt_charge{
+	color:white;
+	position:absolute;
+	width: 100%;
+	bottom:20px;
+	right:0px;
+}
+
+
+/*
+#batt_veh_charge{
+	color:white;
+	position:absolute;
+	width: 100%;
+	bottom:20px;
+	right:0px;
+}*/
+
+#cardStatus{
+	color:#000000;
+	position:absolute;
+	width: 100%;
+	bottom:20px;
+	right:0px;
+	background-color:red;
+}
+
+#battery{background-image: url(battery.png); width:78px; height:100px;}
+
+#SD{background-image: url(SDCard.png); width:78px; height:100px;}
+
+#wrapper{
+	text-align:center;
+	width:900px;
+	margin:0 auto;
+	background-color:#ffffff;
+	padding: 10px 50px 25px 50px;
+ 	border-radius: 4px;
+	border-bottom-right-radius: 25px;
+	border-bottom-left-radius: 25px;
+}
+
+#header{
+	text-align:center;
+	width:800px;
+	height:150px;
+	margin:0 auto;
+	background-color:#ffffff;
+	padding: 10px 100px 10px 100px;
+ 	border-radius: 25px;
+	border-bottom-right-radius: 4px;
+	border-bottom-left-radius: 4px;
+}
+
+#nav{
+	
+	width:1000px;
+	margin:0 auto;
+	
+}

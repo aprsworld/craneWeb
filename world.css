@@ -86,9 +86,18 @@ th{
  	border-radius: 25px;
 
 }
+
 .cabutable {
 	border:none;
 }
+
+.cabutableC{
+	border:none;
+	font-size: 1.2em;
+	font-weight:bold;
+	background-color:#fff;
+}
+
 .SDBlock{
 
 	text-align:center;

@@ -37,7 +37,7 @@ require_once "rdHead.php";
 			<span id="reportDate">Report Date:<br />
 			Loading...<br />
 			<span class="emph">Loading...</span></span><br />
-			<span><span id="age">?</span><br /><span class="small">seconds old</span></span>
+			<span><span id="age">?</span><br /></span>
 		</div>
 		<div class="speedBlock">
 			<span>Speed:</span><br />

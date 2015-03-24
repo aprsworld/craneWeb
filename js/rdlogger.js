@@ -155,7 +155,7 @@ function timerTick(){
 
 	da= new Date();
 
-	$('#age').html(commaSeparateNumber(seconds));
+	$('#age').html(secToTime(seconds)+" old");
 	seconds++;
 	
 	if(seconds%10==1){

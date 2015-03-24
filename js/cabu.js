@@ -1,3 +1,5 @@
+/* requires ian.aprsworld.com/javascript/cookies.js */
+
 var seconds=0;
 var timeZone;
 
@@ -10,57 +12,7 @@ function commaSeparateNumber(val){
 	return val;
 }
 
-function secToTime(sec){
-	
-	var secs = sec;
 
-	if ( 1 == sec ) {
-		return "1 <br>second old";
-	}
-
-	if ( sec < 60 ) {
-		return sec + " <br>seconds old";
-	}
-
-	/* more than one minute */
-
-	var out = "";
-
-	var days= Math.floor(sec/(24*60*60));
-	sec = sec - (Math.floor(sec/(24*60*60))*(24*60*60));
-	
-	var hours= Math.floor(sec/(60*60));
-	sec = sec - (Math.floor(sec/(60*60))*(60*60));
-
-	var minutes= Math.floor(sec/(60));
-	sec = sec - (Math.floor(sec/(60))*(60));
-	
-	out = ('00'+hours).slice(-2)+":"+('00'+minutes).slice(-2)+":"+('00'+sec).slice(-2);
-
-	if ( 1 == days ) {
-		out = days + " day, "+('00'+hours).slice(-2)+":"+('00'+minutes).slice(-2)+":"+('00'+sec).slice(-2);
-		//var d = new Date();
-		//var n = d.getTime();
-		//d = new Date( n - (secs*1000));
-		//out+= +" <br> "+ d.getMonth();
-		//console.log(d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate()+" "+d.getHours()+":"+d.getMinutes()+":"+d.getSeconds());
-	}
-
-	if ( days > 1 ) {
-		out = days + " days, "+('00'+hours).slice(-2)+":"+('00'+minutes).slice(-2)+":"+('00'+sec).slice(-2) ;
-		//var d = new Date();
-		//var n = d.getTime();
-		//d = new Date( n - (secs*1000));
-		//out+= +" <br> "+ d.getMonth();
-		//console.log(d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate()+" "+d.getHours()+":"+d.getMinutes()+":"+d.getSeconds());
-
-	}
-
-	out+=" (hours:minutes:seconds)";
-
-	return out;
-	
-}
 
 var tempUnit = "<span class=\"small\" >C</span>";
 
@@ -84,18 +36,24 @@ function toggleUnit() {
 	
 	if ( "<span class=\"small\" >F</span>" == tempUnit ) {
 		tempUnit = "<span class=\"small\" >C</span>";
+		$("#button1").html("Switch to &deg;F");
+		setCookie("degree","C",365);
 	} else {
 		tempUnit = "<span class=\"small\" >F</span>";
+		$("#button1").html("Switch to &deg;C");
+		setCookie("degree","F",365);
 	}
 
 	/* Applys changes */
-	$("#external_temp").html(crunchTemp(heldData.tempExtC_last)+"&deg;"+tempUnit);
-	$("#min_external_temp").html(crunchTemp(heldData.minTempExtC)+"&deg;"+tempUnit+"<br><span class='smallTime'>"+heldData.minExtTemp_time+"</span>");
-	$("#max_external_temp").html(crunchTemp(heldData.maxTempExtC)+"&deg;"+tempUnit+"<br><span class='smallTime'>"+heldData.maxExtTemp_time+"</span>");
+	if ( null != heldData ){
+		$("#external_temp").html(crunchTemp(heldData.tempExtC_last)+"&deg;"+tempUnit);
+		$("#min_external_temp").html(crunchTemp(heldData.minTempExtC)+"&deg;"+tempUnit);
+		$("#max_external_temp").html(crunchTemp(heldData.maxTempExtC)+"&deg;"+tempUnit);
 
-	$("#internal_temp").html(crunchTemp(heldData.tempIntC_last)+"&deg;"+tempUnit);
-	$("#min_internal_temp").html(crunchTemp(heldData.minTempIntC)+"&deg;"+tempUnit+"<br><span class='smallTime'>"+heldData.minIntTemp_time+"</span>");
-	$("#max_internal_temp").html(crunchTemp(heldData.maxTempIntC)+"&deg;"+tempUnit+"<br><span class='smallTime'>"+heldData.maxIntTemp_time+"</span>");
+		$("#internal_temp").html(crunchTemp(heldData.tempIntC_last)+"&deg;"+tempUnit);
+		$("#min_internal_temp").html(crunchTemp(heldData.minTempIntC)+"&deg;"+tempUnit);
+		$("#max_internal_temp").html(crunchTemp(heldData.maxTempIntC)+"&deg;"+tempUnit);
+	}
 }
 
 var heldData;
@@ -110,7 +68,7 @@ function loadCabuData(){
 		 that with a method that excepts the value to be displayed and returns it the same if it isn't null
 		*/
 		seconds=data.ageSeconds;
-		timeZone = data.timeZone;
+		timeZone = data.parentTimeZone;
 		
 		$("#charger_current").html(data.iCharger_last);
 		$("#min_charger_current").html(data.minICharger); //+"<br><span class='smallTime'>"+data.minICharger_time+"</span>");
@@ -141,25 +99,45 @@ function loadCabuData(){
 		$("#maxIntTemp").attr("title","Maximum temperature occurred at:\n"+data.maxIntTemp_time+" ("+timeZone+")");
 
 
-		$('#reportDate').html('<span class="emph">'+data.packet_date_last.substring(0,10)+''+data.packet_date_last.substring(10,19)+' </span>('+timeZone+')');
+		$('#reportDate').html('<span class="emph">'+data.packet_date_local_last.substring(0,10)+''+data.packet_date_local_last.substring(10,19)+' </span>('+timeZone+')');
 
-		if(null != data.minBatteryStateOfCharge_percent){
-			$("#batt_charge_cabu").html("<span class='emph'>"+data.batteryStateOfCharge_percent_last+"</span><br>( "+data.vUPS_last+" volts)");
-			$("#minBatt").html("<span class='emph'>"+data.minBatteryStateOfCharge_percent+
-				"</span><br>( "+data.minBatteryStateOfCharge+" volts)"); //<br><span>"+data.minBatteryStateOfCharge_time+"</span>
+		if(null != data.minBatt){
+			$("#and_batt").html("<span class='emph'>"+data.batt+"%</span>");
+			$("#minBatt").html("<span class='emph'>"+data.minBatt+
+				"%</span>"); 
 			
-			$("#minBatt").attr("title","Minimum charge occurred at:\n"+data.minBatteryStateOfCharge_time+" ("+timeZone+")");
+			$("#minBatt").attr("title","Minimum charge occurred at:\n"+data.minBatt_time+" ("+timeZone+")");
 
-			$("#maxBatt").html("<span class='emph'>"+data.maxBatteryStateOfCharge_percent+
-				"</span><br>( "+data.maxBatteryStateOfCharge+" volts)");//<br><span>"+data.maxBatteryStateOfCharge_time+"</span>
+			$("#maxBatt").html("<span class='emph'>"+data.maxBatt+
+				"%</span>");
 
-			$("#maxBatt").attr("title","Maximum charge occurred at:\n"+data.maxBatteryStateOfCharge_time+" ("+timeZone+")");
+			$("#maxBatt").attr("title","Maximum charge occurred at:\n"+data.maxBatt_time+" ("+timeZone+")");
 
 		} else {
-			$("#batt_charge_cabu").html('No data');
+			$("#and_batt").html('No data');
 			$("#minBatt").html('No data for today');
 			$("#maxBatt").html('No data for today');
 		}
+
+
+		if(null != data.minBatteryStateOfCharge_percent){
+			$("#batt_charge_cabu").html("<span class='emph'>"+data.batteryStateOfCharge_percent_last+"</span><br>( "+data.vUPS_last+" volts)");
+			$("#minCabBatt").html("<span class='emph'>"+data.minBatteryStateOfCharge_percent+
+				"</span><br>( "+data.minBatteryStateOfCharge+" volts)"); //<br><span>"+data.minBatteryStateOfCharge_time+"</span>
+			
+			$("#minCabBatt").attr("title","Minimum charge occurred at:\n"+data.minBatteryStateOfCharge_time+" ("+timeZone+")");
+
+			$("#maxCabBatt").html("<span class='emph'>"+data.maxBatteryStateOfCharge_percent+
+				"</span><br>( "+data.maxBatteryStateOfCharge+" volts)");//<br><span>"+data.maxBatteryStateOfCharge_time+"</span>
+
+			$("#maxCabBatt").attr("title","Maximum charge occurred at:\n"+data.maxBatteryStateOfCharge_time+" ("+timeZone+")");
+
+		} else {
+			$("#batt_charge_cabu").html('No data');
+			$("#minCabBatt").html('No data for today');
+			$("#maxCabBatt").html('No data for today');
+		}
+
 
 		if(null != data.minVehBatteryStateOfCharge_percent){
 			$("#batt_veh_charge_cabu").html("<span class='emph'>"+data.batteryVehStateOfCharge_percent_last+"</span><br>( "+data.vVehicle_last+" volts)");
@@ -189,7 +167,7 @@ function timerTick(){
 
 	da= new Date();
 
-	$('#age').html(secToTime(seconds));
+	$('#age').html(secToTime(seconds)+" old");
 	seconds++;
 	
 	if(seconds%10==1){
@@ -206,15 +184,18 @@ function timerTick(){
 	setTimeout(timerTick,1000);
 }
 
+function checkTemp(){
+	var deg = getCookie("degree");
+	if (deg != "C") {
+		toggleUnit();
+	}
 
+}
 
 $(document).ready(function(){
 
-
-	
 //	loadCabuData();
 	timerTick();
-	
-	  
+	checkTemp();
 	
 });

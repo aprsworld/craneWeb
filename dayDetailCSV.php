@@ -17,7 +17,7 @@ if ( 0==authPublic($station_id,$db) ) {
 $day=$_REQUEST["day"];
 $tzOffset=getTimeZoneOffsetHours($station_id,$db);
 
-$sql=sprintf("SELECT DATE_ADD(packet_date,INTERVAL %d HOUR) AS packet_date,windSpeed,windGust,windCount,windDirectionSector,batteryStateOfCharge,(windCount/60.0)*0.765 + 0.35 AS windAverage FROM rdLoggerCell_%s WHERE (SECOND(packet_date)<=5 OR SECOND(packet_date)>=55) AND LEFT(DATE_ADD(packet_date,INTERVAL %d HOUR),10)='%s' ORDER BY packet_date",$tzOffset,$station_id,$tzOffset,$day);
+$sql=sprintf("SELECT DATE_ADD(packet_date,INTERVAL %d HOUR) AS packet_date,windSpeed,windGust,windDirectionSector,batteryStateOfCharge FROM rdLoggerCell_%s WHERE LEFT(DATE_ADD(packet_date,INTERVAL %d HOUR),10)='%s' GROUP BY LEFT(packet_date, 16) ORDER BY packet_date",$tzOffset,$station_id,$tzOffset,$day);
 $query=mysql_query($sql,$db);
 //date,windSpeedMS,windGustMS,windAvageMS,windDirectionSector,batteryStateOfCharge
 ?>

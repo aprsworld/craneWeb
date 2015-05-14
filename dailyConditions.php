@@ -5,6 +5,12 @@ $headline=sprintf("Crane Wind Logger %s<br />Daily Conditions",$station_id);
 require_once $_SERVER["DOCUMENT_ROOT"] . "/world_config.php";
 $station_id=cleanStationID($_REQUEST["station_id"]);
 $db=_open_mysql("worldData");
+
+/* if not public, then we need to be authorized */
+if ( 0==authPublic($station_id,$db) ) {
+        require $_SERVER["DOCUMENT_ROOT"] . "/auth.php";
+}
+
 $deviceInfo=getDeviceInfo($station_id,$db);
 $head=$title=$deviceInfo["displayName"];
 $tzOffset=getTimeZoneOffsetHours($station_id,$db);

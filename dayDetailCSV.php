@@ -1,8 +1,4 @@
 <?
-if ( "text" == strtolower($_REQUEST["mode"]) ) 
-	header("Content-type: text/plain");
-else
-	header("Content-type: text/csv");
 
 $station_id=$_REQUEST["station_id"];
 
@@ -16,6 +12,13 @@ if ( 0==authPublic($station_id,$db) ) {
 
 $day=$_REQUEST["day"];
 $tzOffset=getTimeZoneOffsetHours($station_id,$db);
+
+if ( "text" == strtolower($_REQUEST["mode"]) ) {
+	header("Content-type: text/plain");
+} else {
+	header(sprintf('Content-Disposition: attachment; filename=%s_%s_dayDetail.csv',$station_id,str_replace("-","",substr($day,0,10))));
+	header("Content-type: text/csv");
+}
 
 $sql=sprintf("SELECT DATE_ADD(packet_date,INTERVAL %d HOUR) AS packet_date,windSpeed,windGust,windDirectionSector,batteryStateOfCharge FROM rdLoggerCell_%s WHERE LEFT(DATE_ADD(packet_date,INTERVAL %d HOUR),10)='%s' GROUP BY LEFT(packet_date, 16) ORDER BY packet_date",$tzOffset,$station_id,$tzOffset,$day);
 $query=mysql_query($sql,$db);

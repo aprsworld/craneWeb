@@ -40,7 +40,7 @@ if( isset( $_REQUEST["type"] ) ){
 
 $db=_open_mysql("worldData");
 
-$sql=sprintf("SELECT DAYOFYEAR(DATE_ADD(packet_date,INTERVAL %s HOUR)) AS dayOfYear, YEAR(DATE_ADD(packet_date,INTERVAL %s HOUR)) AS year, LEFT(DATE_ADD(packet_date,INTERVAL %s HOUR),10) AS day, UNIX_TIMESTAMP(LEFT(DATE_ADD(packet_date,INTERVAL %s HOUR),10)) AS x, MAX(windGust) AS pulseGust0Max, ROUND(AVG(windSpeed),2) AS pulseCurrent0Average FROM rdLoggerCell_%s GROUP BY DAYOFYEAR(DATE_ADD(packet_date,INTERVAL %s HOUR)) ORDER BY YEAR(DATE_ADD(packet_date,INTERVAL %s HOUR)) DESC, DAYOFYEAR(DATE_ADD(packet_date,INTERVAL %s HOUR)) DESC",$tzOffset,$tzOffset,$tzOffset,$tzOffset,$station_id,$tzOffset,$tzOffset,$tzOffset);
+$sql=sprintf("SELECT DAYOFYEAR(DATE_ADD(packet_date,INTERVAL %s HOUR)) AS dayOfYear, YEAR(DATE_ADD(packet_date,INTERVAL %s HOUR)) AS year, LEFT(DATE_ADD(packet_date,INTERVAL %s HOUR),10) AS day, UNIX_TIMESTAMP(LEFT(DATE_ADD(packet_date,INTERVAL %s HOUR),10)) AS x, MAX(windGust) AS pulseGust0Max, ROUND(AVG(windSpeed),2) AS pulseCurrent0Average FROM rdLoggerCell_%s GROUP BY DATE(DATE_ADD(packet_date,INTERVAL %s HOUR)) ORDER BY YEAR(DATE_ADD(packet_date,INTERVAL %s HOUR)) DESC, DAYOFYEAR(DATE_ADD(packet_date,INTERVAL %s HOUR)) DESC",$tzOffset,$tzOffset,$tzOffset,$tzOffset,$station_id,$tzOffset,$tzOffset,$tzOffset);
 //echo $sql;
 $query=mysql_query($sql,$db);
 $i=0;

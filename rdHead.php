@@ -7,7 +7,7 @@ $r=mysql_fetch_array($query,MYSQL_ASSOC);
 if(NULL != $r){
 	$cabu=true;
 }
-
+$docRoot = $_SERVER["DOCUMENT_ROOT"];
 $loggedIn=false;
 
 
@@ -19,7 +19,7 @@ $loggedIn=false;
 <meta charset="UTF-8">
 <link rel="stylesheet" href="world.css" type="text/css"/>
 <link rel="stylesheet" href="signin.css" type="text/css"/>
-<link rel="icon" type="image/gif" href="http://data.aprsworld.com/favicon.gif">
+<link rel="icon" type="image/gif" href="images/favicon.gif">
 
 
 <script type="text/javascript" src="http://magnum-dev.aprsworld.com/mw/excanvas.min.js"></script>
@@ -59,15 +59,15 @@ password: <input type="password" name="password" size="12" /><br>
 </div>
 
 
-	<img id="logo" src="http://www.aprsworld.com/images/logo_250.png" title="APRS World, LLC, Logo" alt="Logo" />
+	<img id="logo" src="images/logo_250.png" title="APRS World, LLC, Logo" alt="Logo" />
 	<h2><? echo $head ?><br><? echo $headline ?></h2>
 
 	
 </div>
 <div id="nav">
 	<ul>
-		<li><a href="http://data.aprsworld.com/data/crane/?station_id=<?echo $station_id;?>">Current Conditions</a></li>
-		<li><a href="http://data.aprsworld.com/data/crane/dailyConditions.php?station_id=<?echo $station_id;?>">Daily Conditions</a></li>
+		<li><a href="index.php?station_id=<?echo $station_id;?>">Current Conditions</a></li>
+		<li><a href="dailyConditions.php?station_id=<?echo $station_id;?>">Daily Conditions</a></li>
 
 	</ul>
 </div>

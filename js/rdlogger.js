@@ -259,7 +259,7 @@ var tzOffset;
 
 
 function loadHistory() {
-	var urlData = "http://data.aprsworld.com/data/crane/JSONbacklog.php?station_id="+station_id+"&web=1";
+	var urlData = "JSONbacklog.php?station_id="+station_id+"&web=1";
 	$.getJSON(urlData,
 		function (dataHist) {
 			tzOffset=dataHist.timeZoneOffsetHours;

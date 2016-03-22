@@ -84,7 +84,6 @@ function loadData(){
 	$.getJSON(url, 
 	function(data) {
 		hideWarn();
-		
 		tzOffset=data.timeZoneOffsetHours;
 	
 		$('#arrow').rotate({animateTo:(data.windDirectionSector_last*45)});		

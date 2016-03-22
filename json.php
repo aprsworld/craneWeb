@@ -23,6 +23,7 @@ $deviceInfo=mysql_fetch_array($query,MYSQL_ASSOC);
 
 foreach ($deviceInfo as $key => $value){
 	$row[$key]=$value;
+
 }
 
 /* pull actual last record */
@@ -79,6 +80,7 @@ $batteryToday=mysql_fetch_array($query);
 
 foreach ($batteryToday as $key => $value){
 	$row[$key."_today"]=$value;
+	
 }
 $row["uptime_status"]=number_format($row["uptime_status"],0);
 

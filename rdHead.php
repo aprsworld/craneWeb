@@ -19,7 +19,7 @@ $loggedIn=false;
 <meta charset="UTF-8">
 <link rel="stylesheet" href="world.css" type="text/css"/>
 <link rel="stylesheet" href="signin.css" type="text/css"/>
-<link rel="icon" type="image/gif" href="images/favicon.gif">
+<link rel="icon" type="image/gif" href="http://data.aprsworld.com/favicon.gif">
 
 
 <script type="text/javascript" src="http://magnum-dev.aprsworld.com/mw/excanvas.min.js"></script>

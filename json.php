@@ -45,7 +45,7 @@ foreach ($status as $key => $value){
 }
 
 /* find total reports for the day */
-$sql=sprintf("SELECT COUNT(packet_date) AS nPacketsToday FROM rdLoggerCell_%s WHERE DATE_ADD(packet_date,INTERVAL %f HOUR) >= LEFT(DATE_ADD(now(),INTERVAL %f HOUR),10)",$station_id,$deviceInfo["timeZoneOffsetHours"],$deviceInfo["timeZoneOffsetHours"]);
+$sql=sprintf("SELECT COUNT(packet_date) AS nPacketsToday FROM rdLoggerCell_%s WHERE DATE_ADD(packet_date,INTERVAL %f HOUR) >= LEFT(DATE_ADD(now(),INTERVAL %f HOUR),10) AND packet_date>DATE_SUB(now(), INTERVAL 48 HOUR)",$station_id,$deviceInfo["timeZoneOffsetHours"],$deviceInfo["timeZoneOffsetHours"]);
 $query=mysql_query($sql,$db);
 $reports=mysql_fetch_array($query,MYSQL_ASSOC);
 
@@ -65,7 +65,7 @@ foreach ($maxHour as $key => $value){
 }
 
 /* find max today */
-$sql=sprintf("SELECT MAX(windSpeed) AS maxWindSpeed, MAX(windGust) AS maxWindGust FROM rdLoggerCell_%s WHERE DATE_ADD(packet_date,INTERVAL %f HOUR)>=LEFT(DATE_ADD(now(),INTERVAL %f HOUR),10)",$station_id,$deviceInfo["timeZoneOffsetHours"],$deviceInfo["timeZoneOffsetHours"]);
+$sql=sprintf("SELECT MAX(windSpeed) AS maxWindSpeed, MAX(windGust) AS maxWindGust FROM rdLoggerCell_%s WHERE DATE_ADD(packet_date,INTERVAL %f HOUR)>=LEFT(DATE_ADD(now(),INTERVAL %f HOUR),10) AND packet_date>DATE_SUB(now(), INTERVAL 48 HOUR)",$station_id,$deviceInfo["timeZoneOffsetHours"],$deviceInfo["timeZoneOffsetHours"]);
 $query=mysql_query($sql,$db);
 $maxToday=mysql_fetch_array($query,MYSQL_ASSOC);
 
@@ -73,7 +73,7 @@ foreach ($maxToday as $key => $value){
 	$row[$key."_today"]=$value;
 }
 
-$sql=sprintf("SELECT MAX(batteryStateOfCharge) AS maxBatteryStateOfCharge, MIN(batteryStateOfCharge) AS minBatteryStateOfCharge FROM rdLoggerCell_%s WHERE DATE_ADD(packet_date,INTERVAL %f HOUR)>=LEFT(DATE_ADD(now(),INTERVAL %f HOUR),10)",$station_id,$deviceInfo["timeZoneOffsetHours"],$deviceInfo["timeZoneOffsetHours"]);
+$sql=sprintf("SELECT MAX(batteryStateOfCharge) AS maxBatteryStateOfCharge, MIN(batteryStateOfCharge) AS minBatteryStateOfCharge FROM rdLoggerCell_%s WHERE DATE_ADD(packet_date,INTERVAL %f HOUR)>=LEFT(DATE_ADD(now(),INTERVAL %f HOUR),10) AND packet_date>DATE_SUB(now(), INTERVAL 48 HOUR)",$station_id,$deviceInfo["timeZoneOffsetHours"],$deviceInfo["timeZoneOffsetHours"]);
 
 $query=mysql_query($sql,$db);
 $batteryToday=mysql_fetch_array($query);

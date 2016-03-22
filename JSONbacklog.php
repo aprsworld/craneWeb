@@ -32,10 +32,10 @@ $tzR=mysql_fetch_array($queryTZ,MYSQL_ASSOC);
 $timeZoneOffsetHours = $tzR["timeZoneOffsetHours"];
 
 
-$sql=sprintf("SELECT COUNT(*) as count, UNIX_TIMESTAMP(packet_date) as packet_date, ROUND(AVG(windSpeed),1) as speed, ROUND(AVG(windGust),1) as gust,  ROUND(AVG(batteryStateOfCharge),1) as battery FROM rdLoggerCell_%s  WHERE packet_date>DATE_SUB(NOW(), INTERVAL %d %s) AND packet_date <=NOW() GROUP BY LEFT(packet_date,16)",mysql_real_escape_string ($station_id), $expr, mysql_real_escape_string ($type));
+$sql=sprintf("SELECT COUNT(*) as count, UNIX_TIMESTAMP(packet_date) as packet_date, ROUND(AVG(windSpeed),1) as speed, MAX(windGust) as gust,  ROUND(AVG(batteryStateOfCharge),1) as battery FROM rdLoggerCell_%s  WHERE packet_date>DATE_SUB(NOW(), INTERVAL %d %s) AND packet_date <=NOW() GROUP BY LEFT(packet_date,16)",mysql_real_escape_string ($station_id), $expr, mysql_real_escape_string ($type));
 
 if($web)
-$sql=sprintf("SELECT UNIX_TIMESTAMP(packet_date) as packet_date, ROUND(AVG(windSpeed),1) as speed, ROUND(AVG(windGust),1) as gust,  ROUND(AVG(batteryStateOfCharge),1) as battery FROM rdLoggerCell_%s  WHERE packet_date>DATE_SUB(NOW(), INTERVAL %d %s) AND packet_date <=NOW() GROUP BY LEFT(packet_date,15)",mysql_real_escape_string ($station_id), $expr, mysql_real_escape_string ($type));
+$sql=sprintf("SELECT UNIX_TIMESTAMP(packet_date) as packet_date, ROUND(AVG(windSpeed),1) as speed, MAX(windGust) as gust,  ROUND(AVG(batteryStateOfCharge),1) as battery FROM rdLoggerCell_%s  WHERE packet_date>DATE_SUB(NOW(), INTERVAL %d %s) AND packet_date <=NOW() GROUP BY LEFT(packet_date,15)",mysql_real_escape_string ($station_id), $expr, mysql_real_escape_string ($type));
 
 $query=mysql_query($sql,$db);
 $i=0;

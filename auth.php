@@ -29,6 +29,7 @@ if ( ! $validLogin ) {
 	exit;
 }
 
+
 /* return admin state of $username for $serialNumber 
 -1 not authorized
  0 not admin

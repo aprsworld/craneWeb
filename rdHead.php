@@ -10,8 +10,25 @@ if(NULL != $r){
 $docRoot = $_SERVER["DOCUMENT_ROOT"];
 $loggedIn=false;
 
+function getTitle($serialNumber,$db) {
+	if ( FALSE != strpos($serialNumber,'_',1) ) {
+		$serialNumber=substr($serialNumber,0,strpos($serialNumber,'_',1));
+	}
 
 
+	$sql=sprintf("SELECT deviceInfo.displayName FROM deviceInfo WHERE serialNumber='%s'",mysql_real_escape_string($serialNumber));
+	$query=mysql_query($sql,$db);
+
+	if ( 0 == mysql_num_rows($query) ) 
+		return null;
+
+	return mysql_fetch_array($query,MYSQL_ASSOC);
+}
+$deviceInfo=getTitle($station_id,$db);
+//if we are logged in and viewing a private page, we want the display name to be non-generic
+if($validLogin){
+	$head = $deviceInfo["displayName"];
+}
 ?>
 <!DOCTYPE html>
 <html>

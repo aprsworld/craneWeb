@@ -93,7 +93,6 @@ $(document).ready(function(){
 	speedChart = <? echo $flotScriptSpeed; ?>;
 	gustChart = <? echo $flotScriptGust; ?>;
 	loadSpeedChart();
-	console.log("ok");
 	nextMonth();
 	prevMonth();	
 	

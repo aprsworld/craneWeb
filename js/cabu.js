@@ -59,6 +59,7 @@ function toggleUnit() {
 var heldData;
 
 function loadCabuData(){
+	console.log(station_id);
 	var url = "cabujson.php?station_id="+station_id;
 
 	$.getJSON(url, 
@@ -67,6 +68,7 @@ function loadCabuData(){
 		gotta still make the null exceptions for these. There might be a nice way to handle
 		 that with a method that excepts the value to be displayed and returns it the same if it isn't null
 		*/
+		console.log(data.TEST1);
 		seconds=data.ageSeconds;
 		timeZone = data.parentTimeZone;
 		
@@ -118,7 +120,6 @@ function loadCabuData(){
 			$("#minBatt").html('No data for today');
 			$("#maxBatt").html('No data for today');
 		}
-
 
 		if(null != data.minBatteryStateOfCharge_percent){
 			$("#batt_charge_cabu").html("<span class='emph'>"+data.batteryStateOfCharge_percent_last+"</span><br>( "+data.vUPS_last+" volts)");

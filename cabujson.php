@@ -125,11 +125,9 @@ foreach ($r as $key => $value){
 }
 $row["batteryStateOfCharge_percent_last"]=k2BatterySOC($row["vUPS_last"]);
 $row["batteryVehStateOfCharge_percent_last"]=batterySOC($row["vVehicle_last"]);
-
+$row["TEST1"] = $row["parentTimeZoneOffsetHours"];
 $start=getOffsetDate($row["parentTimeZoneOffsetHours"]);
-
 //echo $start;
-
 
 $sql=sprintf("SELECT 
 		MAX(iCharger) AS maxICharger, 
@@ -155,6 +153,8 @@ foreach ($r as $key => $value){
 	$row[$key.""]=$value;
 	
 }
+
+
 
 $sql=sprintf("SELECT 
 		MAX(batt) AS maxBatt, 
@@ -225,7 +225,7 @@ $row["genJSONTime"]=time()-$time . " seconds";
 
 //*
 
-//$row["TEST"] = getOffsetDate(-4.5);//
+//$row["TEST"] = getOffsetDate(1);//
 
 //*/
 

@@ -24,6 +24,13 @@ function getTitle($serialNumber,$db) {
 
 	return mysql_fetch_array($query,MYSQL_ASSOC);
 }
+
+function striptags ($str) {
+
+ return trim(strip_tags(str_replace('<', ' <', $str)));
+
+}
+
 $deviceInfo=getTitle($station_id,$db);
 //if we are logged in and viewing a private page, we want the display name to be non-generic
 if($validLogin){
@@ -41,7 +48,7 @@ if($validLogin){
 
 <script type="text/javascript" src="js/excanvas.min.js"></script>
 <? echo $headers ?>
-<title><? echo $title ?> RD Logger WC</title>
+<title><? echo $head ?> | <? echo striptags($headline, ''); ?></title>
 </head>
 <body>
 <div id=header>

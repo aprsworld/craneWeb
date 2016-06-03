@@ -15,9 +15,10 @@ $deviceInfo=getDeviceInfo($station_id,$db);
 /* Check if a CABU unit is assosiated */
 $cabu = false;
 $sql=sprintf("SELECT * FROM deviceInfo WHERE parent='%s'",$station_id);
-$query=mysql_query($sql,$db);
-$r=mysql_fetch_array($query,MYSQL_ASSOC);
-if(NULL != $r){
+$query1=mysql_query($sql,$db);
+$rezultz1234=mysql_fetch_array($query1,MYSQL_ASSOC);
+if(NULL != $rezultz1234){
+	
 	$cabu=true;
 }
 //print_r($r);
@@ -28,7 +29,6 @@ $headers = '<script language="javascript" type="text/javascript" src="js/date.js
 <script language="javascript" type="text/javascript" src="js/jquery.flot.js"></script>
 <script> var station_id = "'.$station_id.'"; </script>
 <script language="javascript" type="text/javascript" src="js/rdlogger.js"></script><script type="text/javascript" src="js/jQueryRotate.2.2.js"></script>';
-
 
 $head=$title=$deviceInfo["displayName"];
 $headline=sprintf("Crane Wind Logger %s<br />Current Conditions",$station_id);
@@ -96,13 +96,14 @@ require_once "rdHead.php";
 			<span class="emph" id="uptime">Loading...</span> <br />minutes
 		</div>
 	</div>
+
 	<button id="button" name="show" onclick="showStatus()">Show Status</button>
 	<button id="button1" name="unitTog" onclick="toggleUnit()">Change speed unit</button>
-<? if ($cabu && false){ ?>
-	<br><br>
-	<span ><a href="cabu.php?serial=<? echo $r['serialNumber']; ?>&station_id=<? echo $station_id; ?>" style="display: inline; padding-left: 10px; padding-right: 10px;">View CABU</a></span>
-
-<?}?>
+<? //if ($cabu == true){ ?>
+	<!--<br><br>
+	<span ><a href="cabu.php?serial=<? //echo $r['serialNumber']; ?>&station_id=<? //echo $station_id; ?>" style="display: inline; padding-left: 10px; padding-right: 10px;">View CABU</a></span>
+-->
+<?//}?>
 	<br><br>
 	<span class="small">Powered by an APRS World, LLC solution.</span>
 </div>

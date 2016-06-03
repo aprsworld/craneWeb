@@ -12,15 +12,18 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
+	text-align: center;
 }
 
 li {
-    float: left;
+    display: inline-block;
 }
 
 a:link, a:visited {
     display: block;
-    width: 500px;
+	min-width: 310px;
+	width: auto;
+    max-width: 500px;
     font-weight: bold;
     color: #FFFFFF;
     background-color: #80B2CC;

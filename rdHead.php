@@ -92,6 +92,11 @@ password: <input type="password" name="password" size="12" /><br>
 	<ul>
 		<li><a href="index.php?station_id=<?echo $station_id;?>">Current Conditions</a></li>
 		<li><a href="dailyConditions.php?station_id=<?echo $station_id;?>">Daily Conditions</a></li>
-
+		<?php if($cabu==true){ ?>
+		
+		<li><a href="cabu.php?station_id=<?echo $station_id;?>">Cabu Information</a></li>
+		
+		<?}
+		?>
 	</ul>
 </div>

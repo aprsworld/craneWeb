@@ -15,7 +15,7 @@ $r=mysql_fetch_array($query,MYSQL_ASSOC);
 if(NULL != $r){
 	$cabu=true;
 } else {
-
+	
 	header("Location: http://data.aprsworld.com/" );
 	exit;
 

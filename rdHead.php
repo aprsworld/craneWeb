@@ -31,6 +31,41 @@ function striptags ($str) {
 
 }
 
+//type is the type of unit we are searching for (i.e. #40HC). Serial is the serial number of the unit 
+function getScan ($folder, $type, $serial){
+	
+		$pattern = $type . "_" . $serial . "*";
+		$fileArray = glob($folder . '/' . $pattern);
+		return $fileArray;
+
+}
+
+
+
+/*Check if there is a cert for the anemometer this unit is using */
+function hasCert ($stationID){
+	$db=_open_mysql("calibration");
+	$sql=sprintf("SELECT calibrationAnemometer.serialnumber as 'sn' FROM calibrationAnemometer JOIN whereUsed WHERE whereUsed.sensorSerialNumber = calibrationAnemometer.serialnumber AND whereUsed.stationSerialNumber = '%s'",$stationID);
+	
+	$query=mysql_query($sql,$db);
+	
+	if ( 0 == mysql_num_rows($query) ){
+		return null;	
+	}
+	else{
+		$r=mysql_fetch_array($query,MYSQL_ASSOC);
+		if(file_exists ($_SERVER["DOCUMENT_ROOT"] . "/calCerts/40HC_" . $r['sn'] . ".pdf" )){
+			
+			return "calCerts/40HC_" . $r['sn'] . ".pdf";	
+		}
+		else{
+			return null;	
+		}
+	}
+}
+
+
+
 $deviceInfo=getTitle($station_id,$db);
 //if we are logged in and viewing a private page, we want the display name to be non-generic
 if($validLogin){
@@ -98,5 +133,12 @@ password: <input type="password" name="password" size="12" /><br>
 		
 		<?}
 		?>
+		<?php 
+		$cert = hasCert($station_id);
+		if($cert != null){ ?>
+			<li><a href="certs.php?station_id=<?echo $station_id;?>"> Calibration Certificate </a> </li>
+		<?}
+		?>
+		
 	</ul>
 </div>

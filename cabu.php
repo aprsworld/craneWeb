@@ -3,7 +3,16 @@ require_once $_SERVER["DOCUMENT_ROOT"] . "/world_config.php";
 
 $station_id=cleanStationID($_REQUEST["station_id"]);
 
+
+
 $db=_open_mysql("worldData");
+
+/* if not public, then we need to be authorized */
+if ( 0==authPublic($station_id,$db) ) {
+        require $_SERVER["DOCUMENT_ROOT"] . "/auth.php";
+}
+
+
 /* Determine our title and display name */
 $deviceInfo=getDeviceInfo($station_id,$db);
 

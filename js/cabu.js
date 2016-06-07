@@ -87,12 +87,21 @@ function loadCabuData(){
 		$("#maxLoad").attr("title","Maximum amps occurred at:\n"+data.maxILoad_time+" ("+timeZone+")");
 		if(crunchTemp(data.tempExtC_last) > -40 && crunchTemp(data.tempExtC_last) < 150){
 			$("#external_temp").html(crunchTemp(data.tempExtC_last)+"&deg;"+tempUnit);
-			$("#min_external_temp").html(crunchTemp(data.minTempExtC)+"&deg;"+tempUnit); //+tempUnit+"<br><span class='smallTime'>"+data.minExtTemp_time+"</span>");
-			$("#max_external_temp").html(crunchTemp(data.maxTempExtC)+"&deg;"+tempUnit); //+tempUnit+"<br><span class='smallTime'>"+data.maxExtTemp_time+"</span>");
 		}
 		else{
 			$("#external_temp").html("Not Connected");
+
+		}
+		if(crunchTemp(data.minTempExtC) > -40 && crunchTemp(data.minTempExtC) < 150){
+			$("#min_external_temp").html(crunchTemp(data.minTempExtC)+"&deg;"+tempUnit); //+tempUnit+"<br><span class='smallTime'>"+data.minExtTemp_time+"</span>");
+		}
+		else{
 			$("#min_external_temp").html("Not Connected");
+		}
+		if(crunchTemp(data.maxTempExtC) > -40 && crunchTemp(data.maxTempExtC) < 150){
+			$("#max_external_temp").html(crunchTemp(data.maxTempExtC)+"&deg;"+tempUnit); //+tempUnit+"<br><span class='smallTime'>"+data.maxExtTemp_time+"</span>");
+		}
+		else{
 			$("#max_external_temp").html("Not Connected");
 		}
 		$("#minExtTemp").attr("title","Minimum temperature occurred at:\n"+data.minExtTemp_time+" ("+timeZone+")");

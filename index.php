@@ -93,10 +93,12 @@ require_once "rdHead.php";
      			<h2 id="cardStatus">Loading...</h2>
 		</div>
 		<div class="block">		
-			<span>Crane Wind<br />Logger Uptime:</span><br />
+			<span>Crane Wind Logger Uptime:</span><br />
 			<span class="emph" id="uptime">Loading...</span><br />
 			<span>Internal Memory Percent Full:</span><br />
 			<span class="emph" id="memPercent">Loading...</span><br />
+			<span>Approx. Days Memory Left: </span><br />
+			<span class="emph" id="memDaysRemain">Loading...</span><br />
 		</div>
 	</div>
 

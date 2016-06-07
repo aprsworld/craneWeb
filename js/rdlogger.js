@@ -96,13 +96,22 @@ function loadData(){
 		$("#windGust").html(parseFloat(data.windGust_last*mod).toFixed(dec));
 		
 		var memPercent = (parseFloat(data.dataflashPage_status)/4095)*100;
-		memPercent = Math.round(100*memPercent)/100;
+		
+		var daysRemaining =  (parseFloat((4095-data.dataflashPage_status)*44))/1440;
+		
+		memPercent = Math.round(memPercent);
+		daysRemaining = Math.round(daysRemaining); 
 		if(memPercent >= 100.00){
 			$("#memPercent").html("Memory Full");
 			$("#memPercent").css("color", "red");
+			$("#memDaysRemain").html("0");
+			$("#memDaysRemain").css("color", "red");
+
 		} else {
 			$("#memPercent").html(memPercent+"%");
 			$("#memPercent").css("color", "black");
+			$("#memDaysRemain").html(daysRemaining);
+			$("#memDaysRemain").css("color", "black");
 		}
 		var unit="m/s";
 

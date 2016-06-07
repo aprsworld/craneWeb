@@ -86,6 +86,7 @@ require_once "rdHead.php";
 			<span id="statusDate">Loading...<br />
 			Received Loading... ago</span><br />
 			<span class="small">(hours:minutes:seconds)</span>
+			
 		</div>
 		<div class="SDBlock" id="SDImage">
 			<img src="SDCard.png" alt="" />
@@ -93,7 +94,9 @@ require_once "rdHead.php";
 		</div>
 		<div class="block">		
 			<span>Crane Wind<br />Logger Uptime:</span><br />
-			<span class="emph" id="uptime">Loading...</span> <br />minutes
+			<span class="emph" id="uptime">Loading...</span><br />
+			<span>Internal Memory Percent Full:</span><br />
+			<span class="emph" id="memPercent">Loading...</span><br />
 		</div>
 	</div>
 

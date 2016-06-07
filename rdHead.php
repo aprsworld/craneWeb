@@ -125,18 +125,18 @@ password: <input type="password" name="password" size="12" /><br>
 </div>
 <div id="nav">
 	<ul>
-		<li><a href="index.php?station_id=<?echo $station_id;?>">Current Conditions</a></li>
-		<li><a href="dailyConditions.php?station_id=<?echo $station_id;?>">Daily Conditions</a></li>
+		<li class="navLink"><a href="index.php?station_id=<?echo $station_id;?>">Current Conditions</a></li>
+		<li class="navLink"><a href="dailyConditions.php?station_id=<?echo $station_id;?>">Daily Conditions</a></li>
 		<?php if($cabu==true){ ?>
 		
-		<li><a href="cabu.php?station_id=<?echo $station_id;?>">Cabu Information</a></li>
+		<li class="navLink"><a href="cabu.php?station_id=<?echo $station_id;?>">Cabu Information</a></li>
 		
 		<?}
 		?>
 		<?php 
 		$cert = hasCert($station_id);
 		if($cert != null){ ?>
-			<li><a href="certs.php?station_id=<?echo $station_id;?>"> Calibration Certificate </a> </li>
+			<li class="navLink"><a href="certs.php?station_id=<?echo $station_id;?>"> Calibration Certificate </a> </li>
 		<?}
 		?>
 		

@@ -94,8 +94,16 @@ function loadData(){
 
 		$("#windSpeed").html(parseFloat(data.windSpeed_last*mod).toFixed(dec));
 		$("#windGust").html(parseFloat(data.windGust_last*mod).toFixed(dec));
-
 		
+		var memPercent = (parseFloat(data.dataflashPage_status)/4095)*100;
+		memPercent = Math.round(100*memPercent)/100;
+		if(memPercent >= 100.00){
+			$("#memPercent").html("Memory Full");
+			$("#memPercent").css("color", "red");
+		} else {
+			$("#memPercent").html(memPercent+"%");
+			$("#memPercent").css("color", "black");
+		}
 		var unit="m/s";
 
 		if(mod==2.23){
@@ -136,7 +144,7 @@ function loadData(){
 			$('#cardStatus').html("Card not inserted!");
 		}
 
-		$('#uptime').html(commaSeparateNumber(data.uptime_status));//add commas
+		$('#uptime').html(commaSeparateNumber(data.uptime_status)+" Minutes");//add commas
 		
 		if ( 120 < seconds ) {
 			$(".block").css("background-color","RED");

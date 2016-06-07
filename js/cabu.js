@@ -46,10 +46,24 @@ function toggleUnit() {
 
 	/* Applys changes */
 	if ( null != heldData ){
-		$("#external_temp").html(crunchTemp(heldData.tempExtC_last)+"&deg;"+tempUnit);
-		$("#min_external_temp").html(crunchTemp(heldData.minTempExtC)+"&deg;"+tempUnit);
-		$("#max_external_temp").html(crunchTemp(heldData.maxTempExtC)+"&deg;"+tempUnit);
-
+		if(crunchTemp(heldData.tempExtC_last) > -40 && crunchTemp(heldData.tempExtC_last) < 150){
+			$("#external_temp").html(crunchTemp(heldData.tempExtC_last)+"&deg;"+tempUnit);
+		}
+		else{
+			$("#external_temp").html("Not Connected");
+		}
+		if(crunchTemp(heldData.minTempExtC) > -40 && crunchTemp(heldData.minTempExtC) < 150){
+			$("#min_external_temp").html(crunchTemp(heldData.minTempExtC)+"&deg;"+tempUnit);			
+		}
+		else{
+			$("#min_external_temp").html("Not Connected");			
+		}
+		if(crunchTemp(heldData.maxTempExtC) > -40 && crunchTemp(heldData.maxTempExtC) < 150){
+			$("#max_external_temp").html(crunchTemp(heldData.maxTempExtC)+"&deg;"+tempUnit);
+		}
+		else{
+			$("#max_external_temp").html("Not Connected");			
+		}
 		$("#internal_temp").html(crunchTemp(heldData.tempIntC_last)+"&deg;"+tempUnit);
 		$("#min_internal_temp").html(crunchTemp(heldData.minTempIntC)+"&deg;"+tempUnit);
 		$("#max_internal_temp").html(crunchTemp(heldData.maxTempIntC)+"&deg;"+tempUnit);

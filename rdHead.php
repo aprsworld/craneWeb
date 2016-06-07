@@ -123,20 +123,30 @@ password: <input type="password" name="password" size="12" /><br>
 
 	
 </div>
+<? $linkCount = 2;
+		$cert = hasCert($station_id);
+
+	if($cabu==true){
+		$linkCount++;	
+	}
+	if($cert != null){
+		$linkCount++;	
+	}
+	
+	?>	
 <div id="nav">
 	<ul>
-		<li class="navLink"><a href="index.php?station_id=<?echo $station_id;?>">Current Conditions</a></li>
-		<li class="navLink"><a href="dailyConditions.php?station_id=<?echo $station_id;?>">Daily Conditions</a></li>
+		<li class="navlink-<? echo $linkCount?> navLink"><a href="index.php?station_id=<?echo $station_id;?>">Current Conditions</a></li>
+		<li class="navlink-<? echo $linkCount?> navLink"><a href="dailyConditions.php?station_id=<?echo $station_id;?>">Daily Conditions</a></li>
 		<?php if($cabu==true){ ?>
 		
-		<li class="navLink"><a href="cabu.php?station_id=<?echo $station_id;?>">Cabu Information</a></li>
+		<li class="navlink-<? echo $linkCount?> navLink"><a href="cabu.php?station_id=<?echo $station_id;?>">Cabu Information</a></li>
 		
 		<?}
 		?>
 		<?php 
-		$cert = hasCert($station_id);
 		if($cert != null){ ?>
-			<li class="navLink"><a href="certs.php?station_id=<?echo $station_id;?>"> Calibration Certificate </a> </li>
+			<li class="navlink-<? echo $linkCount?> navLink"><a href="certs.php?station_id=<?echo $station_id;?>"> Calibration Certificate </a> </li>
 		<?}
 		?>
 		

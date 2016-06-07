@@ -95,12 +95,18 @@ function loadData(){
 		$("#windSpeed").html(parseFloat(data.windSpeed_last*mod).toFixed(dec));
 		$("#windGust").html(parseFloat(data.windGust_last*mod).toFixed(dec));
 		
+		//find percent of memory that is full
 		var memPercent = (parseFloat(data.dataflashPage_status)/4095)*100;
 		
+		//4095 total pages of capacity minus current pages
+		//44 lines of data per page of data flash and one line of data every minute so that is 44 minutes per page
+		//there are 1440 minutes in a day
 		var daysRemaining =  (parseFloat((4095-data.dataflashPage_status)*44))/1440;
 		
+		//round our numbers
 		memPercent = Math.round(memPercent);
 		daysRemaining = Math.round(daysRemaining); 
+		
 		if(memPercent >= 100.00){
 			$("#memPercent").html("Memory Full");
 			$("#memPercent").css("color", "red");

@@ -25,8 +25,41 @@ li {
     padding: 0;
     overflow: hidden;
 	text-align: right;
-	background-color: #333;
-	    font-size:0;
+	background-color: rgb(5, 80, 165);
+	font-size:0;
+	
+}
+#certData{
+	width: 100%;	
+}
+#certData table{
+	width: 100%;	
+}
+#certData ul{
+	text-align: left;	
+}
+#certData li{
+	display: block;
+	float: none;
+}
+.certBlock{
+	display: inline-block;
+	width: 28%;
+	border: 1px solid #ccc;
+	padding: 10px;
+	height: auto;
+	min-height: 100px;
+	text-align: left;
+	margin-bottom: 1%;
+}
+.certBlock+.certBlock{
+	margin-left: 1%;	
+}
+.certBlock h2{
+	font-size: 18px;
+	color: #333;
+	font-weight: bold;
+	text-align: left;
 }
 .navLink{
 	display:inline-block;	
@@ -34,10 +67,11 @@ li {
 	padding: 0;
 	margin: 0;
 	font-size:16px;
-	
+	background-color: rgb(5, 80, 165);
+
 }
 .navLink+.navLink{
-	border-left: solid white 1px;
+	border-left: solid white 2px;
 
 }
 
@@ -64,32 +98,37 @@ a:active {
     background-color: #5A7D8F;
 }
 .navLink:hover{
-	background-color: #111;
+	background-color: rgb(5, 20, 120);
 	
 }
 .navLink:hover>a{
 	color: white;
 }
+.dlBtn{
+	margin: auto;
+	text-align: center;
+	max-width: 300px;	
+}
 .onWhiteLink{
-	background-color: #333;
+	background-color: rgb(5, 80, 165);
 	color: white;
 	width: auto;
 	cursor: pointer;
 	border: 1px solid #222;
 }
 .onWhiteLink:hover{
-	background-color: #222;
+	background-color: rgb(5, 20, 120);
 	color: white;
 }
 .tableLink{
 	width: 500px;
-	background-color: #333;
+	background-color: rgb(5, 80, 165);
 }
 .tableLink+.tableLink{
 	border-top: 1px solid white;	
 }
 .tableLink:hover{
-	background-color: #111;	
+	background-color: rgb(5, 20, 120);
 }
 table {
 	border-collapse: collapse;
@@ -108,10 +147,15 @@ table{
 }
 
 th{
-	background-color: #80B2CC;
+	background-color: #333;
 	color: white;
 }
-
+.cabuTable{
+	color: #333;	
+}
+.cabuTable .emph{
+	color: #333;
+}
 
 .emph { font-size: 1.5em; }
 .bignum{ font-size: 2.5em; }
@@ -215,6 +259,7 @@ th{
 	width: 100%;
 	bottom:20px;
 	right:0px;
+	font-family: arial;
 }
 
 

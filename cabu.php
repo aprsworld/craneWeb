@@ -61,7 +61,7 @@ $iconHeight = 50;
 		</div>
 	</div>	
 	<span>Hover the cursor over the minimum and maximum values to see what time they occurred.</span>
-	<table style="border:none; width:90%">
+	<table class="cabuTable" style="border:none; width:90%">
 		<tr><td class="cabutable"></td><td class="cabutable"></td><td class="cabutable"><h3>Current</h3></td><td class="cabutable"><h3>Min Today</h3></td><td class="cabutable"><h3>Max Today</h3></td></tr>
 		<tr >
 			<td class="cabutable"><img id="battImg" src="craneGate.png" alt="battery" height= <? echo $iconHeight;  ?> title="Shows the CABU unit's battery state of charge according to the last packet received" /></td>

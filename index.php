@@ -45,29 +45,29 @@ require_once "rdHead.php";
 			<span class="emph">Loading...</span></span><br />
 			<span><span id="age">?</span><br /></span>
 		</div>
-		<div class="vert-align speedBlock">
+		<div title="Click here to view Wind Speed Graph" class="vert-align speedBlock">
 			<span>Speed:</span><br />
 			<span id="windSpeed" class="bignum">...</span><br />
 			<span class="unit">m/s</span>
 		</div>
 		
-		<div class="vert-align speedBlock">
+		<div title="Click here to view Wind Speed Graph" class="vert-align speedBlock">
 			<span>Gust:</span><br />
 			<span id="windGust" class="bignum">...</span><br />
 			<span class="unit">m/s</span>
 		</div>
-		<div id="maxGust" class="vert-align speedBlock">
+		<div id="maxGust" title="Click here to view Wind Speed Graph" class="vert-align speedBlock">
 			<span class="emph">Max Gust</span><br />
 			<span>Last Hour:<span class="emph">...</span>MPH</span><br />
 			<span>Today:<span class="emph">...</span>MPH</span>
 		</div>
 	</div>
 	<div class="line">
-		<div class="vert-align-bottom battBlock" id="image" >
+		<div title="Click here to view Battery Graph" class="vert-align-bottom battBlock" id="image" >
 			<img id="battImg" src="battery.png" alt="battery" title="Shows the data logger's battery state of charge according to the last packet received" />
      			<h2 id="batt_charge">Loading</h2>
 		</div>
-		<div class="vert-align-bottom battBlock">
+		<div title="Click here to view Battery Graph" class="vert-align-bottom battBlock">
 			<span class="emph">Battery</span><br />
 			<span>Min Today:<span id="minBatt" class="emph">...%</span></span><br />
 			<span>Max Today:<span id="maxBatt" class="emph">...%</span></span>

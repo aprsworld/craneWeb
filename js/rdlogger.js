@@ -19,20 +19,28 @@ $(document).ready(function(){
 	
 	button.value="show";
 
-	var hover_color="#80B2CC";	
+	var hover_color="#0550a5";
+	var hover_text_color="#fff"
 	
 	$("#status").hide();
 
 	$(".speedBlock").hover(function(){
 		$(".speedBlock").css("background-color", hover_color);
+		$(".speedBlock").css("color", hover_text_color);
+
 	},function(){
 		$(".speedBlock").css("background-color","#ffffff");
+		$(".speedBlock").css("color", "#333");
+
 	});
 	
 	$(".battBlock").hover(function(){
 		$(".battBlock").css("background-color", hover_color);
+		$(".battBlock").css("color", hover_text_color);
+
 	},function(){
 		$(".battBlock").css("background-color","#ffffff");
+		$(".battBlock").css("color", "#333");
 	});
 
 	$(".speedBlock").click(function(){

@@ -21,6 +21,7 @@ require "rdHead.php";
 
 $sql=sprintf("SELECT LEFT(DATE_ADD(packet_date,INTERVAL %d HOUR),15) AS date_hour, ROUND(AVG(windSpeed),2) AS windAverage, MAX(windGust) AS windGust, COUNT(*) AS nPackets FROM rdLoggerCell_%s WHERE LEFT(DATE_ADD(packet_date,INTERVAL %d HOUR),10)='%s' GROUP BY date_hour",$tzOffset,$station_id,$tzOffset,$day);
 $query=mysql_query($sql,$db);
+
 ?>
 <div id="wrapper">
 <table border="1">
@@ -41,7 +42,6 @@ $query=mysql_query($sql,$db);
 	</thead>
 	<tbody>
 <?
-
 while ( $r=mysql_fetch_array($query) ) {
 	printf("<tr>\n");
 	printf("<td>%s0</td>",$r["date_hour"]);

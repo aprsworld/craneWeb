@@ -148,6 +148,8 @@ password: <input type="password" name="password" size="12" /><br>
 		if($cert != null){ ?>
 			<li class="navlink-<? echo $linkCount?> navLink"><a href="certs.php?station_id=<?echo $station_id;?>"> Calibration Certificate </a> </li>
 		<?}
+		$db=_open_mysql("worldData");
+
 		?>
 		
 	</ul>

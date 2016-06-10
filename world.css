@@ -40,6 +40,7 @@ li {
 	border-left: solid white 1px;
 
 }
+
 a:link, a:visited {
     display: block;
     font-weight: bold;
@@ -80,6 +81,16 @@ a:active {
 	background-color: #222;
 	color: white;
 }
+.tableLink{
+	width: 500px;
+	background-color: #333;
+}
+.tableLink+.tableLink{
+	border-top: 1px solid white;	
+}
+.tableLink:hover{
+	background-color: #111;	
+}
 table {
 	border-collapse: collapse;
 	border-radius: 14px;
@@ -108,10 +119,11 @@ th{
 .smallTime{ font-size: .5em; }
 
 
-.line {  }
+.line {  
+	color: #333;
+}
 
 .line+.line{
-	margin-top: 1%;	
 }
 
 .vert-align{
@@ -132,7 +144,7 @@ th{
 }
 
 .speedBlock{
-
+	cursor: pointer;
 	text-align:center;
 	display:inline-block;
 	padding: 20px;
@@ -140,7 +152,7 @@ th{
 
 }
 .battBlock{
-
+	cursor: pointer;
 	text-align:center;
 	display:inline-block;
 	padding: 20px;

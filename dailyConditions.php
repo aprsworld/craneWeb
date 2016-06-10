@@ -69,11 +69,11 @@ while($r=mysql_fetch_array($query,MYSQL_ASSOC)){
 	}
 	printf("<tr><td>%s</td><td>%s</td><td>%s</td>",$r["day"],($r["pulseCurrent0Average"]." m/s <br><br>".round($r["pulseCurrent0Average"]*2.23,2)." MPH"),$r["pulseGust0Max"]." m/s <br><br>".round($r["pulseGust0Max"]*2.23,2)." MPH");
 	printf("\t\t\t<td>");
-	printf("<a href=\"dayDetail.php?day=%s&amp;station_id=%s\">Web Table(Minute Data)</a> ",$r["day"],$station_id);
-	printf("<a href=\"tenMinuteDetail.php?day=%s&amp;station_id=%s\">Web Table (10 Minute Data)</a> ",$r["day"],$station_id);
-	printf("<a href=\"hourDetail.php?day=%s&amp;station_id=%s\">Web Table (Hourly Data)</a> ",$r["day"],$station_id);
-	printf("<a href=\"dayDetailCSV.php?mode=text&amp;day=%s&amp;station_id=%s\">Text Table</a> ",$r["day"],$station_id);
-	printf("<a href=\"dayDetailCSV.php?mode=csv&amp;day=%s&amp;station_id=%s\">CSV Table</a> ",$r["day"],$station_id);
+	printf("<a class=\"tableLink\" href=\"dayDetail.php?day=%s&amp;station_id=%s\">Web Table(Minute Data)</a> ",$r["day"],$station_id);
+	printf("<a class=\"tableLink\"  href=\"tenMinuteDetail.php?day=%s&amp;station_id=%s\">Web Table (10 Minute Data)</a> ",$r["day"],$station_id);
+	printf("<a class=\"tableLink\"  href=\"hourDetail.php?day=%s&amp;station_id=%s\">Web Table (Hourly Data)</a> ",$r["day"],$station_id);
+	printf("<a class=\"tableLink\"  href=\"dayDetailCSV.php?mode=text&amp;day=%s&amp;station_id=%s\">Text Table</a> ",$r["day"],$station_id);
+	printf("<a class=\"tableLink\"  href=\"dayDetailCSV.php?mode=csv&amp;day=%s&amp;station_id=%s\">CSV Table</a> ",$r["day"],$station_id);
 	printf("</td>");	
 	printf("</tr>");
 	if( $maxY < $r["pulseGust0Max"] ) $maxY = $r["pulseGust0Max"];

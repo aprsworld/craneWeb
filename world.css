@@ -18,40 +18,68 @@ ul {
 li {
     float: left;
 }
+
+#nav ul{
+	list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+	text-align: right;
+	background-color: #333;
+	    font-size:0;
+}
 .navLink{
 	display:inline-block;	
 	float: none;
+	padding: 0;
+	margin: 0;
+	font-size:16px;
 	
+}
+.navLink+.navLink{
+	border-left: solid white 1px;
+
 }
 a:link, a:visited {
     display: block;
-    width: 500px;
     font-weight: bold;
     color: #FFFFFF;
-    background-color: #80B2CC;
     text-align: center;
-    padding: 10px 0px 10px 0px;
+    padding: 10px 10px 10px 10px;
     text-decoration: none;
     text-transform: uppercase;
 }
 .navLink a{
 	display:inline-block;	
 	float: none;
-	min-width: 310px;
 	width: auto;
-    max-width: 500px;
 }
 .navlink-4{
-	width: 49%;	
 }
 .navlink-4 a{
-	width: 100%;	
-	max-width: none;
+	
 }
-a:hover, a:active {
+a:active {
     background-color: #5A7D8F;
 }
-
+.navLink:hover{
+	background-color: #111;
+	
+}
+.navLink:hover>a{
+	color: white;
+}
+.onWhiteLink{
+	background-color: #333;
+	color: white;
+	width: auto;
+	cursor: pointer;
+	border: 1px solid #222;
+}
+.onWhiteLink:hover{
+	background-color: #222;
+	color: white;
+}
 table {
 	border-collapse: collapse;
 	border-radius: 14px;
@@ -224,7 +252,6 @@ th{
 }
 
 #nav{
-	
 	width:1000px;
 	margin:0 auto;
 	

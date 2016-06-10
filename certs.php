@@ -40,9 +40,7 @@ require_once "rdHead.php";
 		<h1>No Response From Server. Please check to make sure you are still connected to the internet</h1>
 	</div>
 	<? if($cert != null){ ?>
-	<object data="<? echo "/" . $cert; ?>" type="application/pdf" height="700px" width="100%">
-	   <p><b>Example fallback content</b>: This browser does not support PDFs. Please download the PDF to view it: <a href="<? echo "/" . $cert; ?>">Download PDF</a>.</p>
-	</object>
+	  <a class="onWhiteLink" href="<? echo "/" . $cert; ?>" download>Download PDF</a>
 	<? } else { ?>
 	<h2> Sorry no certificate found for this station. </h2>
 	<? }?>

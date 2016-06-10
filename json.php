@@ -38,7 +38,7 @@ foreach ($r as $key => $value){
 /* pull last status record */
 $sql=sprintf("SELECT SEC_TO_TIME(UNIX_TIMESTAMP()-UNIX_TIMESTAMP(packet_date)) AS ageTime,(UNIX_TIMESTAMP()-UNIX_TIMESTAMP(packet_date)) AS ageSeconds, DATE_ADD(packet_date,INTERVAL %f HOUR) AS packet_date_local, rdLoggerCellStatus_%s.* FROM rdLoggerCellStatus_%s ORDER BY packet_date DESC LIMIT 1",$deviceInfo['timeZoneOffsetHours'],$station_id,$station_id);
 $statusquery=mysql_query($sql,$db);
-$status=@mysql_fetch_array($statusquery,MYSQL_ASSOC);
+$status=mysql_fetch_array($statusquery,MYSQL_ASSOC);
 
 foreach ($status as $key => $value){
 	$row[$key."_status"]=$value;

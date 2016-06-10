@@ -80,6 +80,9 @@ require_once "rdHead.php";
 		</div>
 	</div>
 	<div  class="line" id="flot" style="width: 100%;height: 200px;font-size: 14px;line-height: 1em;overflow: visible; overflow-x: hidden;"></div>
+	<button id="button" name="show">Show Status</button>
+	<button id="button1" name="unitTog">Change to m/s</button>
+	<button id="graphToggle"> Toggle Battery Graph </button>
 	<div id="status" class="line">	
 		<div class="vert-align block">		
 			<span class="emph">Status Date:</span><br />
@@ -102,8 +105,7 @@ require_once "rdHead.php";
 		</div>
 	</div>
 
-	<button id="button" name="show" onclick="showStatus()">Show Status</button>
-	<button id="button1" name="unitTog" onclick="toggleUnit()">Change speed unit</button>
+	
 <? //if ($cabu == true){ ?>
 	<!--<br><br>
 	<span ><a href="cabu.php?serial=<? //echo $r['serialNumber']; ?>&station_id=<? //echo $station_id; ?>" style="display: inline; padding-left: 10px; padding-right: 10px;">View CABU</a></span>

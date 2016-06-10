@@ -6,7 +6,11 @@ var battChart=[];
 var xMin = Math.round(new Date().getTime() / 1000)-86400 ;
 var xMax = Math.round(new Date().getTime() / 1000) ;
 var yMax = 0;
-
+var statusObject = {
+	showStatus : false,
+	windGraph : true
+	
+}
 
 $(document).ready(function(){
 
@@ -33,10 +37,15 @@ $(document).ready(function(){
 
 	$(".speedBlock").click(function(){
 		console.log("load speed chart");
+		$('#graphToggle').text("Toggle Battery Graph");
+		statusObject.windGraph = true;
 		loadSpeedChart();
 	});
 	$(".battBlock").click(function(){
 		console.log("load battery chart");
+		$('#graphToggle').text("Toggle Wind Graph");
+		statusObject.windGraph = false;
+		
 		loadBattChart();
 	});
 
@@ -58,8 +67,9 @@ $(document).ready(function(){
 	});
 	loadData();
 	timerTick();
-	  
-	
+	 $("#button").on("click", showStatus); 
+	 $("#button1").on("click", toggleUnit); 
+	 $("#graphToggle").on("click",toggleGraph);
 });
 
 function hideWarn(){
@@ -324,29 +334,60 @@ function updateticksarray() {
 
 function showStatus(){
 	var button = document.getElementsByName ("button");
-		
-	if(button.value=="show"){
+		console.log("fired "+statusObject.showStatus );
+	if(statusObject.showStatus == false){
 		$("#status").show();
-		button.value="hide";
+		statusObject.showStatus = true;
+		//button.value="hide";
 		$("#button").html("Hide Status");
-	}else{
+	}else if(statusObject.showStatus == true){
 		$("#status").hide();
-		button.value="show";
+		statusObject.showStatus = false;
+
+		//button.value="show";
 		$("#button").html("Show Status");
 	}
+	else{
+		console.log("failed "+statusObject.showStatus);	
+	}
 }
+function toggleGraph() {
+	console.log(statusObject.windGraph);
+	if(statusObject.windGraph == false){
+		console.log("load speed chart");
+				statusObject.windGraph  = true;
 
+		loadSpeedChart();
+		$('#graphToggle').text("Toggle Battery Graph");
+	}else if(statusObject.windGraph  == true){
+		console.log("load battery chart");
+				statusObject.windGraph  = false;
+
+		loadBattChart();
+		$('#graphToggle').text("Toggle Wind Graph");
+
+	}
+	else{
+		console.log("failed "+statusObject.windGraph);	
+	}
+	
+}
 function toggleUnit(){
 	
 	console.log(mod);
 
 	if(mod==1){
+		$('#button1').text('Change to m/s');
 		mod=2.23;
 	}else{
+		$('#button1').text('Change to MPH');
+
 		mod=1;
 	}
 
 	loadData();
+	statusObject.windGraph  = true;
+			$('#graphToggle').text("Toggle Battery Graph");
 
 	loadSpeedChart();
 

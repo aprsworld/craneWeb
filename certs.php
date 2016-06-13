@@ -81,6 +81,7 @@ $anemometerDetail=mysql_fetch_array($query2,MYSQL_ASSOC);
 		<h1>Anemometer Calibration Certificate Scan </h1>
 
 	  <a class="dlBtn onWhiteLink" href="<? echo "/" . $cert; ?>" download><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Download PDF</a>
+	<p class="small">Internet Explorer users, right-click the above button and click "save target as..."</p> 
 	<? } else { ?>
 	<h2> Sorry no certificate found for this station. </h2>
 	<? }?>

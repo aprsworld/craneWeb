@@ -243,6 +243,7 @@ function loadSpeedChart(){
 		},
 		color: 'blue'
 	}], {
+		
 		xaxis: {
 			min: xMin,
 			max: xMax,

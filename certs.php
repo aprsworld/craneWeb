@@ -32,7 +32,7 @@ $headers = '<script language="javascript" type="text/javascript" src="js/date.js
 <script src="https://use.fontawesome.com/2900603c7e.js"></script>';
 
 $head=$title=$deviceInfo["displayName"];
-$headline=sprintf("Crane Wind Logger %s<br />Current Conditions",$station_id);
+$headline=sprintf("Crane Wind Logger %s<br /> Calibration Certificate",$station_id);
 require_once "rdHead.php";
 
 $db =_open_mysql("calibration");
@@ -48,7 +48,7 @@ $anemometerDetail=mysql_fetch_array($query2,MYSQL_ASSOC);
 	<div id="certData">
 		<h1>Anemometer Calibration Certificate Data</h1>
 		
-		<div class="certBlock">
+		<div class="vert-align certBlock">
 			<h2> Serial Number </h2>
 			<p> <? echo $anemometerDetail['serialNumber']; ?></p>
 			<h2> Manufacturer </h2>
@@ -56,16 +56,17 @@ $anemometerDetail=mysql_fetch_array($query2,MYSQL_ASSOC);
 			<h2> Certificate Number </h2>
 			<p> <? echo $anemometerDetail['calibrationCertificateNumber']; ?></p>
 		</div>
-		<div class="certBlock">
+		<div class="vert-align certBlock">
 			<h2> Type </h2>
 			<p> <? echo $anemometerDetail['description']; ?></p>
-			
+			<h2> Calibration Lab </h2>
+			<p> <? echo $anemometerDetail['calibrationLab']; ?></p>
 			<h2> mMS Value</h2>
 			<p> <? echo $anemometerDetail['mMS']; ?></p>
 			<h2> bMS Value</h2>
 			<p><? echo $anemometerDetail['bMS']; ?> </p>
 		</div>
-		<div class="certBlock">
+		<div class="vert-align certBlock">
 			<h2> Certificate Date </h2>
 			<p> <? echo $anemometerDetail['calibrationCertificateDate']; ?></p>
 			<h2> In Service Date </h2>

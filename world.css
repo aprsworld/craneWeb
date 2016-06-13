@@ -24,10 +24,13 @@ li {
     margin: 0;
     padding: 0;
     overflow: hidden;
-	text-align: right;
+	text-align: center;
 	background-color: rgb(5, 80, 165);
 	font-size:0;
 	
+}
+#prevArr, #nextArr{
+	cursor: pointer;	
 }
 #certData{
 	width: 100%;	
@@ -60,6 +63,9 @@ li {
 	color: #333;
 	font-weight: bold;
 	text-align: left;
+}
+.certBlock p{
+	margin: 5px 0 5px 0;	
 }
 .navLink{
 	display:inline-block;	
@@ -107,7 +113,7 @@ a:active {
 .dlBtn{
 	margin: auto;
 	text-align: center;
-	max-width: 300px;	
+	max-width: 28%;	
 }
 .onWhiteLink{
 	background-color: rgb(5, 80, 165);

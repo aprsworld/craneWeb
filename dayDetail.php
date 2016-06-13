@@ -31,17 +31,17 @@ $query=mysql_query($sql,$db);
 <table id="table" border="1">
 	<thead>
 		<tr>
-			<th style = "background-color: #80B2CC;" class="Date" rowspan="2">Date</th>
-			<th style = "background-color: #80B2CC;" colspan="2">Speed</th>
-			<th style = "background-color: #80B2CC;" colspan="2">Gust</th>
-			<th style = "background-color: #80B2CC;" class="Direction" rowspan="2">Direction</th>
-			<th style = "background-color: #80B2CC;" class="Battery" rowspan="2">Battery</th>
+			<th class="Date" rowspan="2">Date</th>
+			<th colspan="2">Speed</th>
+			<th colspan="2">Gust</th>
+			<th class="Direction" rowspan="2">Direction</th>
+			<th class="Battery" rowspan="2">Battery</th>
 		</tr>
 		<tr>
-			<th style = "background-color: #80B2CC;" class="mss" >m/s</th>
-			<th style = "background-color: #80B2CC;" class="mphs" >MPH</th>
-			<th style = "background-color: #80B2CC;" class="msg" >m/s</th>
-			<th style = "background-color: #80B2CC;" class="mphg" >MPH</th>
+			<th class="mss" >m/s</th>
+			<th class="mphs" >MPH</th>
+			<th class="msg" >m/s</th>
+			<th class="mphg" >MPH</th>
 		</tr>
 	</thead>
 	<tbody>

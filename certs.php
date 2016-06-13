@@ -78,7 +78,7 @@ $anemometerDetail=mysql_fetch_array($query2,MYSQL_ASSOC);
 	
 	
 	<? if($cert != null){ ?>
-		<h1> Certificate Scan </h1>
+		<h1>Anemometer Calibration Certificate Scan </h1>
 
 	  <a class="dlBtn onWhiteLink" href="<? echo "/" . $cert; ?>" download><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Download PDF</a>
 	<? } else { ?>

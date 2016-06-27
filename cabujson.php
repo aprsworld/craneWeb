@@ -125,7 +125,6 @@ foreach ($r as $key => $value){
 }
 $row["batteryStateOfCharge_percent_last"]=k2BatterySOC($row["vUPS_last"]);
 $row["batteryVehStateOfCharge_percent_last"]=batterySOC($row["vVehicle_last"]);
-$row["TEST1"] = $row["parentTimeZoneOffsetHours"];
 $start=getOffsetDate($row["parentTimeZoneOffsetHours"]);
 //echo $start;
 
@@ -224,9 +223,8 @@ $row["maxVehBatteryStateOfCharge_percent"]=batterySOC($row["maxVehBatteryStateOf
 $row["genJSONTime"]=time()-$time . " seconds";
 
 //*
-
-//$row["TEST"] = getOffsetDate(1);//
-
+//$row["TEST"] = getOffsetDate(-5);//
+//$row["TEST1"] = new DateTime();
 //*/
 
 echo json_encode($row);
@@ -234,13 +232,15 @@ echo json_encode($row);
 //echo $r["minBatteryStateOfCharge"];
 
 function getOffsetDate ($tz) {
-	$date = new DateTime(Date('Y-m-d')." 00:00:00");
+	$date = new DateTime();
 	/* Checks if tz is a whole number */
 	if (is_numeric($tz) && floor($tz) == $tz ) {
 		if ($tz > 0) {		
 			$date->sub(new DateInterval(sprintf('PT%sH',$tz)));
 		} else {
-			$date->add(new DateInterval(sprintf('PT%sH',abs($tz))));
+			$di = new DateInterval(sprintf('PT%sH',abs($tz)));
+			$di->invert = 1;
+			$date->add($di);
 		}
 	} else {
 		if ($tz > 0) {		

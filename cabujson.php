@@ -155,11 +155,16 @@ foreach ($r as $key => $value){
 
 
 
+/*$sql=sprintf("SELECT 
+		MAX(batt) AS maxBatt, 
+		MIN(batt) AS minBatt 
+	FROM view_%s_cell 
+	WHERE packet_date >= '%s' AND packet_date < DATE_ADD('%s', INTERVAL 1 DAY)",$station_id,$start,$start);*/
 $sql=sprintf("SELECT 
 		MAX(batt) AS maxBatt, 
 		MIN(batt) AS minBatt 
 	FROM view_%s_cell 
-	WHERE packet_date >= '%s' AND packet_date < DATE_ADD('%s', INTERVAL 1 DAY)",$station_id,$start,$start);
+	WHERE packet_date >= DATE_ADD('%s', INTERVAL -1 DAY) AND packet_date < '%s'",$station_id,$start,$start);
 $query=mysql_query($sql,$db);
 $r=mysql_fetch_array($query,MYSQL_ASSOC);
 

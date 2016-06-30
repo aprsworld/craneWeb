@@ -110,6 +110,7 @@ $r=mysql_fetch_array($query,MYSQL_ASSOC);
 
 $row["parentTimeZone"] = $r["timeZone"];
 $row["parentTimeZoneOffsetHours"] = $r["timeZoneOffsetHours"];
+//echo $sql;
 
 
 
@@ -155,16 +156,11 @@ foreach ($r as $key => $value){
 
 
 
-/*$sql=sprintf("SELECT 
-		MAX(batt) AS maxBatt, 
-		MIN(batt) AS minBatt 
-	FROM view_%s_cell 
-	WHERE packet_date >= '%s' AND packet_date < DATE_ADD('%s', INTERVAL 1 DAY)",$station_id,$start,$start);*/
 $sql=sprintf("SELECT 
 		MAX(batt) AS maxBatt, 
 		MIN(batt) AS minBatt 
 	FROM view_%s_cell 
-	WHERE packet_date >= DATE_ADD('%s', INTERVAL -1 DAY) AND packet_date < '%s'",$station_id,$start,$start);
+	WHERE packet_date >= '%s' AND packet_date < DATE_ADD('%s', INTERVAL 1 DAY)",$station_id,$start,$start);
 $query=mysql_query($sql,$db);
 $r=mysql_fetch_array($query,MYSQL_ASSOC);
 
@@ -228,24 +224,48 @@ $row["maxVehBatteryStateOfCharge_percent"]=batterySOC($row["maxVehBatteryStateOf
 $row["genJSONTime"]=time()-$time . " seconds";
 
 //*
-//$row["TEST"] = getOffsetDate(-5);//
-//$row["TEST1"] = new DateTime();
+$row["TEST"] = getOffsetDate(-5);//
+$row["TEST1"] = new DateTime();
 //*/
+$row["TEST2"] = getMinMaxDate('batt', '100', '2016-06-29 21:11:00',  'A3448_cell', _open_mysql("worldDataView"), '-5');
+$row["TEST3"] = getOffsetDatedebug(-5);
+$row["TEST4"] = new DateTime(gmdate('Y-m-d')." 00:00:00",new DateTimeZone("UTC"));
+$row["TEST5"] = new DateTime(Date('Y-m-d')." 00:00:00",new DateTimeZone("UTC"));
 
 echo json_encode($row);
 
 //echo $r["minBatteryStateOfCharge"];
 
 function getOffsetDate ($tz) {
-	$date = new DateTime();
+	$date = new DateTime(gmdate('Y-m-d')." 00:00:00",new DateTimeZone("UTC"));
 	/* Checks if tz is a whole number */
 	if (is_numeric($tz) && floor($tz) == $tz ) {
 		if ($tz > 0) {		
 			$date->sub(new DateInterval(sprintf('PT%sH',$tz)));
 		} else {
-			$di = new DateInterval(sprintf('PT%sH',abs($tz)));
-			$di->invert = 1;
-			$date->add($di);
+			$date-> add(new DateInterval(sprintf('PT%sH',abs($tz))));
+			
+		}
+	} else {
+		if ($tz > 0) {		
+			$date->sub(new DateInterval(sprintf('PT%sH30M',floor($tz))));
+		} else {
+			$date->add(new DateInterval(sprintf('PT%sH30M',abs(ceil($tz)))));
+		}
+	}
+
+	return $date->format('Y-m-d H:i:s');
+}
+
+function getOffsetDatedebug ($tz) {
+	$date = new DateTime(Date('Y-m-d')." 19:00:00",new DateTimeZone("UTC"));
+	/* Checks if tz is a whole number */
+	if (is_numeric($tz) && floor($tz) == $tz ) {
+		if ($tz > 0) {		
+			$date->sub(new DateInterval(sprintf('PT%sH',$tz)));
+		} else {
+			$date-> add(new DateInterval(sprintf('PT%sH',abs($tz))));
+			
 		}
 	} else {
 		if ($tz > 0) {		
@@ -258,13 +278,14 @@ function getOffsetDate ($tz) {
 }
 
 function getMinMaxDate($col, $val, $start,  $station_id, $db, $tzoff){
+	//echo $col ." ". $val ." ". $start ." ". $station_id ." ". $db ." ". $tzoff;
 	$sql=sprintf('SELECT DATE_ADD(packet_date, INTERVAL %f HOUR) as packet_date , %s 
 		FROM  view_%s 
 		WHERE 
 			packet_date >= "%s"  AND packet_date < DATE_ADD("%s", INTERVAL 1 DAY) AND
 			%s = %s ORDER BY packet_date ASC LIMIT 1',$tzoff,$col,$station_id,$start, $start, $col,$val);
 
-
+	
 	$query=mysql_query($sql,$db);
 	$time=mysql_fetch_array($query,MYSQL_ASSOC);
 	return $time["packet_date"];

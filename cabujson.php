@@ -229,15 +229,21 @@ $row["TEST1"] = new DateTime();
 //*/
 $row["TEST2"] = getMinMaxDate('batt', '100', '2016-06-29 21:11:00',  'A3448_cell', _open_mysql("worldDataView"), '-5');
 $row["TEST3"] = getOffsetDatedebug(-5);
-$row["TEST4"] = new DateTime(gmdate('Y-m-d')." 00:00:00",new DateTimeZone("UTC"));
-$row["TEST5"] = new DateTime(Date('Y-m-d')." 00:00:00",new DateTimeZone("UTC"));
+$row["TEST4"] = new DateTime(gmdate('Y-m-d')." 00:00:00");
+$row["TEST5"] = new DateTime(Date('Y-m-d')." 00:00:00");
 
 echo json_encode($row);
 
 //echo $r["minBatteryStateOfCharge"];
 
 function getOffsetDate ($tz) {
-	$date = new DateTime(gmdate('Y-m-d')." 00:00:00",new DateTimeZone("UTC"));
+	$start_date = Date('Y-m-d');
+	$curdate = DateTime::createFromFormat('Y-m-d',$start_date);
+	$curdate -> modify($tz . ' hours');
+	$today = $curdate->format('Y-m-d');
+	
+	
+	$date = new DateTime($today ." 00:00:00",new DateTimeZone("UTC"));
 	/* Checks if tz is a whole number */
 	if (is_numeric($tz) && floor($tz) == $tz ) {
 		if ($tz > 0) {		

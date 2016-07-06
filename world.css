@@ -191,6 +191,7 @@ th{
 	display:inline-block;
 	padding: 20px;
  	border-radius: 25px;
+	min-width: 15%;
 }
 
 .speedBlock{
@@ -199,7 +200,7 @@ th{
 	display:inline-block;
 	padding: 20px;
  	border-radius: 25px;
-
+	
 }
 .battBlock{
 	cursor: pointer;

@@ -59,7 +59,7 @@ function hasCert ($stationID){
 			return "calCerts/40HC_" . $r['sn'] . ".pdf";	
 		}
 		else{
-			return null;	
+			return "noFile";	
 		}
 	}
 }

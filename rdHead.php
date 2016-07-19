@@ -140,7 +140,7 @@ password: <input type="password" name="password" size="12" /><br>
 		<li class="navlink-<? echo $linkCount?> navLink"><a href="dailyConditions.php?station_id=<?echo $station_id;?>">Daily Conditions</a></li>
 		<?php if($cabu==true){ ?>
 		
-		<li class="navlink-<? echo $linkCount?> navLink"><a href="cabu.php?station_id=<?echo $station_id;?>">Cabu Information</a></li>
+		<li class="navlink-<? echo $linkCount?> navLink"><a href="cabu.php?station_id=<?echo $station_id;?>">In-Cab Information</a></li>
 		
 		<?}
 		?>

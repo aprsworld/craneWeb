@@ -72,7 +72,7 @@ $iconHeight = 50;
 		
 		</tr>
 		<tr >
-			<td class="cabutable"><img id="battImg" src="battery.png" alt="battery" height= <? echo $iconHeight;  ?> title="Shows the CABU unit's battery state of charge according to the last packet received" /></td>
+			<td class="cabutable"><img id="battImg1" src="battery.png" alt="battery" height= <? echo $iconHeight;  ?> title="Shows the CABU unit's battery state of charge according to the last packet received" /></td>
 			<td class="cabutable"><span class="">CABU Battery</span><br /></td>
 			<td class="cabutableC" id="batt_charge_cabu"></td>
 			<td class="cabutable" id="minCabBatt"></td>

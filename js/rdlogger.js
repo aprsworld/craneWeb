@@ -167,7 +167,7 @@ function loadData(){
 		}else{
 			$("#battImg").attr("src","batteryLow.png").load(function() {pic_real_height=100});
 		}
-
+		console.log(data);
 		$('#statusDate').html(data.packet_date_status + "<br>Received "+data.ageTime_status+" ago.");
 		
 		if ( 0 == data.sdStatus_status ) {

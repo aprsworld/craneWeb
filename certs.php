@@ -82,7 +82,7 @@ $anemometerDetail=mysql_fetch_array($query2,MYSQL_ASSOC);
 	  <a class="dlBtn onWhiteLink" href="<? echo "/" . $cert; ?>" download><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Download PDF</a>
 	<p class="small">Internet Explorer users, right-click the above button and click "save target as..."</p> 
 	<? } else { ?>
-	<h2> Sorry no certificate found for this station. </h2>
+	<p> <b>Electronic copy of calibration certificate not found. Please Contact APRS World to request a copy.</b> </p>
 	<? }?>
 <? //if ($cabu == true){ ?>
 	<!--<br><br>

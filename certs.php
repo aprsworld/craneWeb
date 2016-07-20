@@ -77,12 +77,12 @@ $anemometerDetail=mysql_fetch_array($query2,MYSQL_ASSOC);
 	</div>
 	
 	<? if($cert != null && $cert != "noFile"){ ?>
-		<h1>Anemometer Calibration Certificate Scan </h1>
+		<h1>Electronic Copy of Calibration Certificate</h1>
 
 	  <a class="dlBtn onWhiteLink" href="<? echo "/" . $cert; ?>" download><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Download PDF</a>
 	<p class="small">Internet Explorer users, right-click the above button and click "save target as..."</p> 
 	<? } else { ?>
-	<p> <b>Electronic copy of calibration certificate not found. Please Contact APRS World to request a copy.</b> </p>
+	<p> <b>Electronic copy of calibration certificate not found. Contact APRS World to request a copy.</b> </p>
 	<? }?>
 <? //if ($cabu == true){ ?>
 	<!--<br><br>

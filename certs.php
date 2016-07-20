@@ -62,9 +62,9 @@ $anemometerDetail=mysql_fetch_array($query2,MYSQL_ASSOC);
 			<h2> Calibration Lab </h2>
 			<p> <? echo $anemometerDetail['calibrationLab']; ?></p>
 			<h2> mMS Value</h2>
-			<p> <? echo $anemometerDetail['mMS']; ?></p>
+			<p> <? echo round($anemometerDetail['mMS'], 5); ?></p>
 			<h2> bMS Value</h2>
-			<p><? echo $anemometerDetail['bMS']; ?> </p>
+			<p><? echo round($anemometerDetail['bMS'], 5); ?> </p>
 		</div>
 		<div class="vert-align certBlock">
 			<h2> Certificate Date </h2>
@@ -78,9 +78,8 @@ $anemometerDetail=mysql_fetch_array($query2,MYSQL_ASSOC);
 	
 	<? if($cert != null && $cert != "noFile"){ ?>
 		<h1>Electronic Copy of Calibration Certificate</h1>
-
+	<p class="small">Internet Explorer users, right-click this button and click "save target as..."</p> 
 	  <a class="dlBtn onWhiteLink" href="<? echo "/" . $cert; ?>" download><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Download PDF</a>
-	<p class="small">Internet Explorer users, right-click the above button and click "save target as..."</p> 
 	<? } else { ?>
 	<p> <b>Electronic copy of calibration certificate not found. Contact APRS World to request a copy.</b> </p>
 	<? }?>
@@ -89,6 +88,9 @@ $anemometerDetail=mysql_fetch_array($query2,MYSQL_ASSOC);
 	<span ><a href="cabu.php?serial=<? //echo $r['serialNumber']; ?>&station_id=<? //echo $station_id; ?>" style="display: inline; padding-left: 10px; padding-right: 10px;">View CABU</a></span>
 -->
 <?//}?>
+		<br><br>
+	 <span class="small">Note: If the anemometer for this Crane Wind Logger has been replaced, please contact APRS World with the new anemometer serial number so the database can be updated.</span>
+
 	<br><br>
 	<span class="small">Powered by an APRS World, LLC solution.</span>
 </div>

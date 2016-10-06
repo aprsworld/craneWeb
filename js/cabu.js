@@ -187,7 +187,7 @@ function loadCabuData(){
 		}
 
 		heldData = data;
-
+		
 	});
 
 }
@@ -209,7 +209,14 @@ function timerTick(){
 	}else{
 		$(".caution").hide();
 	}
-	
+	console.log(seconds);
+	if ( seconds > 120 ) {
+		$("#reportBlock").css("background-color","RED");
+		$("#reportBlock").attr("title","Data is old");
+	} else {
+		$("#reportBlock").css("background-color","WHITE");
+		$("#reportBlock").attr("title","");
+	}
 	setTimeout(timerTick,1000);
 }
 

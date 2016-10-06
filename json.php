@@ -16,6 +16,8 @@ $deviceInfo=mysql_fetch_array($query,MYSQL_ASSOC);
 foreach ($deviceInfo as $key => $value){
 	$row[$key]=$value;
 }
+// potential query to find number of wind speeds over 0.0 - would determine if wind direction is displayed or not
+//SELECT COUNT(windDirectionSector) FROM `rdLoggerCell_R84` WHERE windDirectionSector != 0 AND packet_date>DATE_SUB(now(), INTERVAL 24 HOUR)
 
 $sql=sprintf("SELECT status.packet_date, sec_to_time(unix_timestamp()-unix_timestamp(packet_date)) AS ageTime,(unix_timestamp()-unix_timestamp(packet_date)) AS ageSeconds,deviceInfo.owner, deviceInfo.updateRate, deviceInfo.timeZone, deviceInfo.timeZoneOffsetHours, DATE_ADD(status.packet_date,INTERVAL deviceInfo.timeZoneOffsetHours HOUR) AS packet_date_local FROM status LEFT JOIN (deviceInfo) ON (status.serialNumber=deviceInfo.serialNumber) WHERE status.serialNumber='%s'",$station_id);
 $query=mysql_query($sql,$db);

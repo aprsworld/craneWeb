@@ -10,6 +10,11 @@ $db=_open_mysql("worldData");
 /* if not public, then we need to be authorized */
 if ( 0==authPublic($station_id,$db) ) {
         require $_SERVER["DOCUMENT_ROOT"] . "/auth.php";
+		if(authSerialNumber($_SESSION['username'],$station_id,$db) < 0){
+			$docRoot = $_SERVER["DOCUMENT_ROOT"];
+	
+			header("Location:/login.php", true);
+		}
 }
 
 
@@ -52,7 +57,7 @@ $iconHeight = 50;
 ?>
 <div id="wrapper">
 	<div class="line">
-		<div class="block">
+		<div id="reportBlock" class="block">
 			Report Date:<br />
 			<span id="reportDate">
 			Loading...<br />

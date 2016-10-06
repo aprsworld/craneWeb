@@ -7,6 +7,11 @@ $db=_open_mysql("worldData");
 /* if not public, then we need to be authorized */
 if ( 0==authPublic($station_id,$db) ) {
         require $_SERVER["DOCUMENT_ROOT"] . "/auth.php";
+		if(authSerialNumber($_SESSION['username'],$station_id,$db) < 0){
+			$docRoot = $_SERVER["DOCUMENT_ROOT"];
+	
+			header("Location:/login.php", true);
+		}
 }
 
 /* Determine our title and display name */
@@ -37,6 +42,7 @@ require_once "rdHead.php";
 
 $db =_open_mysql("calibration");
 $anemometersql=sprintf("SELECT calibrationAnemometer.* FROM calibrationAnemometer JOIN whereUsed WHERE whereUsed.sensorSerialNumber = calibrationAnemometer.serialnumber AND whereUsed.stationSerialNumber = '%s'", $station_id);
+
 $query2=mysql_query($anemometersql,$db);
 $anemometerDetail=mysql_fetch_array($query2,MYSQL_ASSOC);
 
@@ -73,6 +79,8 @@ $anemometerDetail=mysql_fetch_array($query2,MYSQL_ASSOC);
 			<p> <? echo $anemometerDetail['inServiceDate']; ?></p>
 			<h2> Expiration Date </h2>
 			<p><? echo $anemometerDetail['expiresDate']; ?> </p>
+			<span class="small top-margin"> <i> Date Format: YYYY-MM-DD </i> </span>
+
 		</div>
 	</div>
 	

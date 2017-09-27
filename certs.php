@@ -10,7 +10,7 @@ if ( 0==authPublic($station_id,$db) ) {
 		if(authSerialNumber($_SESSION['username'],$station_id,$db) < 0){
 			$docRoot = $_SERVER["DOCUMENT_ROOT"];
 	
-			header("Location:/login.php", true);
+			header("Location: /login.php", true);
 		}
 }
 

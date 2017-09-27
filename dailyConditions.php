@@ -12,7 +12,7 @@ if ( 0==authPublic($station_id,$db) ) {
 		if(authSerialNumber($_SESSION['username'],$station_id,$db) < 0){
 			$docRoot = $_SERVER["DOCUMENT_ROOT"];
 	
-			header("Location:/login.php", true);
+			header("Location: /login.php", true);
 		}
 }
 
@@ -54,8 +54,8 @@ $i=0;
 <table>
 <tr>
 	<td colspan="4" style="text-align: center;">
-		<img style="float: left;" src="images/prevArrow.png" title="Previous Month" onclick="prevMonth()" id="prevArr" />
-		<img style="float: right;" src="images/nextArrow.png" title="Next Month" onclick="nextMonth()" id="nextArr" />
+		<img style="float: left;" src="res/prevArrow.png" title="Previous Month" onclick="prevMonth()" id="prevArr" />
+		<img style="float: right;" src="res/nextArrow.png" title="Next Month" onclick="nextMonth()" id="nextArr" />
 		<h4>Daily Average / Maximum (<span id="speedUnit">MPH</span>) <span id="yearMonth"></span></h4>
 		<div id="flot" style="width: 100%;height: 425px;font-size: 14px;line-height: 1em;overflow: visible; overflow-x: hidden;"></div>
 	</td>

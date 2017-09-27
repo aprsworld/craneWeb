@@ -14,7 +14,7 @@ if ( 0==authPublic($station_id,$db) ) {
 		if(authSerialNumber($_SESSION['username'],$station_id,$db) < 0){
 			$docRoot = $_SERVER["DOCUMENT_ROOT"];
 	
-			header("Location:/login.php", true);
+			header("Location: /login.php", true);
 		}
 }
 
@@ -95,7 +95,20 @@ do {
 } while ( $gr=mysql_fetch_array($gquery,MYSQL_ASSOC) );
 
 $kmlOutput = $dom->saveXML();
-header('Content-type: application/vnd.google-earth.kml+xml');
-//header('Content-type: text/plain');
+
+if ( isset($_REQUEST['action']) && $_REQUEST['action'] == 'download' ) {
+	header('Content-Transfer-Encoding: binary');  // For Gecko browsers mainly
+	$gdate=gmdate('D, d M Y H:i:s');
+	header('Last-Modified: ' . $gdate . ' GMT');
+	header('Content-Encoding: none');
+	header('Content-Type: application/vnd.google-earth.kml+xml');
+	$filename=sprintf("%s_%s.kml",$station_id,gmdate('Ymd_His'));
+	header('Content-Disposition: attachment; filename=' . $filename);  // Make the browser display the Save As dialog
+} else if ( isset($_REQUEST['action']) && $_REQUEST['action'] == 'text' ) {
+	header('Content-type: text/plain');
+} else {
+	header('Content-type: application/vnd.google-earth.kml+xml');
+}
+
 echo $kmlOutput;
 ?>

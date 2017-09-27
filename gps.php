@@ -14,7 +14,7 @@ if ( 0==authPublic($station_id,$db) ) {
 		if(authSerialNumber($_SESSION['username'],$station_id,$db) < 0){
 			$docRoot = $_SERVER["DOCUMENT_ROOT"];
 	
-			header("Location:/login.php", true);
+			header("Location: /login.php", true);
 		}
 }
 
@@ -51,7 +51,8 @@ $gr=mysql_fetch_array($gquery,MYSQL_ASSOC);
 
 ?>
 <div id="wrapper">
-	<div class="line">
+	<!-- div class="line" -->
+	<div>
 		<b>Note:</b>This page does not automatically refresh. You must reload page to check for new data!
 		<br />
 		<div id="reportBlock" class="block">
@@ -60,7 +61,12 @@ $gr=mysql_fetch_array($gquery,MYSQL_ASSOC);
 			<? echo $gr['packet_date']; ?>
 			</span>
 		</div>
+		<br />
+		Download <a style="color: #333;" href="gpsKML_line.php?action=download&<? echo $station_id; ?>">Google Earth KML file</a> for this unit.
+
+
 	</div>	
+
 	<table class="cabuTable" style="border:none; width:90%">
 		<thead>
 			<th>GPS Date</th>

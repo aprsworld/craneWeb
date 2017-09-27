@@ -41,11 +41,11 @@ $(document).ready(function(){
 
 	$("#settings").hover(function(){
 		$("#settings").css("background-color", hover_color);
-		$("#gear").attr("src","gearwhite.png");
+		$("#gear").attr("src","res/gearwhite.png");
 		$("#gearTip").show();
 	},function(){
 		$("#settings").css("background-color","#ffffff");
-		$("#gear").attr("src","gear.png");
+		$("#gear").attr("src","res/gear.png");
 		$("#gearTip").hide();
 	});
 	$( document ).ajaxError(function(event){
@@ -117,11 +117,11 @@ function loadData(){
 
 		//This doesn't work yet		
 		if(data.batteryStateOfCharge_last>75){
-			$("#battImg").attr("src","battery.png").load(function() {pic_real_height=100});	
+			$("#battImg").attr("src","res/battery.png").load(function() {pic_real_height=100});	
 		}else if(data.batteryStateOfCharge_last>60){
-			$("#battImg").attr("src","batteryMid.png").load(function() {pic_real_height=100});
+			$("#battImg").attr("src","res/batteryMid.png").load(function() {pic_real_height=100});
 		}else{
-			$("#battImg").attr("src","batteryLow.png").load(function() {pic_real_height=100});
+			$("#battImg").attr("src","res/batteryLow.png").load(function() {pic_real_height=100});
 		}
 
 		$('#statusDate').html(data.packet_date_status + "<br>Received "+data.ageTime_status+" ago.");

@@ -13,7 +13,7 @@ if ( 0==authPublic($station_id,$db) ) {
 		if(authSerialNumber($_SESSION['username'],$station_id,$db) < 0){
 			$docRoot = $_SERVER["DOCUMENT_ROOT"];
 	
-			header("Location:/login.php", true);
+			header("Location: /login.php", true);
 		}
 }
 
@@ -69,7 +69,7 @@ $iconHeight = 50;
 	<table class="cabuTable" style="border:none; width:90%">
 		<tr><td class="cabutable"></td><td class="cabutable"></td><td class="cabutable"><h3>Current</h3></td><td class="cabutable"><h3>Min Today</h3></td><td class="cabutable"><h3>Max Today</h3></td></tr>
 		<tr >
-			<td class="cabutable"><img id="battImg" src="craneGate.png" alt="battery" height= <? echo $iconHeight;  ?> title="Shows the CABU unit's battery state of charge according to the last packet received" /></td>
+			<td class="cabutable"><img id="battImg" src="res/craneGate.png" alt="battery" height= <? echo $iconHeight;  ?> title="Shows the CABU unit's battery state of charge according to the last packet received" /></td>
 			<td class="cabutable"><span class="">Android Battery</span><br /></td>
 			<td class="cabutableC" id="and_batt"></td>
 			<td class="cabutable" id="minBatt"></td>
@@ -77,7 +77,7 @@ $iconHeight = 50;
 		
 		</tr>
 		<tr >
-			<td class="cabutable"><img id="battImg1" src="battery.png" alt="battery" height= <? echo $iconHeight;  ?> title="Shows the CABU unit's battery state of charge according to the last packet received" /></td>
+			<td class="cabutable"><img id="battImg1" src="res/battery.png" alt="battery" height= <? echo $iconHeight;  ?> title="Shows the CABU unit's battery state of charge according to the last packet received" /></td>
 			<td class="cabutable"><span class="">CABU Battery</span><br /></td>
 			<td class="cabutableC" id="batt_charge_cabu"></td>
 			<td class="cabutable" id="minCabBatt"></td>
@@ -85,7 +85,7 @@ $iconHeight = 50;
 		
 		</tr>
 		<tr>
-			<td class="cabutable"><img id="battVehImg" src="car_battery-web.png"  height=<? echo $iconHeight;  ?> alt="battery" title="Shows the crane's battery state of charge according to the last packet received" /></td>
+			<td class="cabutable"><img id="battVehImg" src="res/car_battery-web.png"  height=<? echo $iconHeight;  ?> alt="battery" title="Shows the crane's battery state of charge according to the last packet received" /></td>
 			<td class="cabutable"><span class="">Crane Battery</span><br /></td>
 			<td class="cabutableC" id="batt_veh_charge_cabu"></td>
 			<td class="cabutable" id="minVehBatt" ></td>
@@ -93,7 +93,7 @@ $iconHeight = 50;
 		</tr>
 
 		<tr>
-			<td class="cabutable"><img  height=<? echo $iconHeight;  ?> src="images/lightning-web.png" alt="Lightning" title="Charger Current" /></td>
+			<td class="cabutable"><img  height=<? echo $iconHeight;  ?> src="res/lightning-web.png" alt="Lightning" title="Charger Current" /></td>
 			<td class="cabutable"><span class="">Charger Current:</span></td>
 			
 			<td class="cabutableC" id="charger"> <span id="charger_current" class="emph">...</span><br>amps</td>
@@ -101,7 +101,7 @@ $iconHeight = 50;
 			<td class="cabutable" id="maxCharger"> <span id="max_charger_current" class="emph">...</span><br>amps</td>
 		</tr>
 		<tr>
-			<td class="cabutable"><img  height=<? echo $iconHeight;  ?> src="images/lightning-web.png" alt="Lightning" title="Charger Current" /></td>
+			<td class="cabutable"><img  height=<? echo $iconHeight;  ?> src="res/lightning-web.png" alt="Lightning" title="Charger Current" /></td>
 
 			<td class="cabutable"><span class="">Load Current:</span></td>
 			
@@ -110,14 +110,14 @@ $iconHeight = 50;
 			<td class="cabutable" id="maxLoad"> <span id="max_load_current" class="emph">...</span><br>amps</td>
 		</tr>
 		<tr>
-			<td class="cabutable"><img height=<? echo $iconHeight;  ?> src="images/thermometer-web.png" alt="Lightning" title="Charger Current" /></td>
+			<td class="cabutable"><img height=<? echo $iconHeight;  ?> src="res/thermometer-web.png" alt="Lightning" title="Charger Current" /></td>
 			<td class="cabutable"><span class="">External Temperature:</span></td>
 			<td class="cabutableC" id="extTemp"> <span id="external_temp" class="emph">...</span></td>
 			<td class="cabutable" id="minExtTemp"> <span id="min_external_temp" class="emph">...</span></td>
 			<td class="cabutable" id="maxExtTemp"> <span id="max_external_temp" class="emph">...</span></td>
 		</tr>
 		<tr>
-			<td class="cabutable"><img height=<? echo $iconHeight;  ?> src="images/thermometer-web.png" alt="Lightning" title="Charger Current" /></td>
+			<td class="cabutable"><img height=<? echo $iconHeight;  ?> src="res/thermometer-web.png" alt="Lightning" title="Charger Current" /></td>
 			<td class="cabutable"><span class="">Internal Temperature:</span></td>
 			<td class="cabutableC" id="intTemp"> <span id="internal_temp" class="emph">...</span></td>
 			<td class="cabutable" id="minIntTemp"> <span id="min_internal_temp" class="emph">...</span></td>

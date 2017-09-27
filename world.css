@@ -291,9 +291,9 @@ th{
 	background-color:red;
 }
 
-#battery{background-image: url(battery.png); width:78px; height:100px;}
+#battery{background-image: url(res/battery.png); width:78px; height:100px;}
 
-#SD{background-image: url(SDCard.png); width:78px; height:100px;}
+#SD{background-image: url(res/SDCard.png); width:78px; height:100px;}
 
 #wrapper{
 	text-align:center;

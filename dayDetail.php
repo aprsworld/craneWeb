@@ -10,7 +10,7 @@ if ( 0==authPublic($station_id,$db) ) {
 	if(authSerialNumber($_SESSION['username'],$station_id,$db) < 0){
 		$docRoot = $_SERVER["DOCUMENT_ROOT"];
 
-		header("Location:/login.php", true);
+		header("Location: /login.php", true);
 	}
 }
 
@@ -19,10 +19,7 @@ $tzOffset=getTimeZoneOffsetHours($station_id,$db);
 
 $title=$headline="Detailed Wind Data for " . $station_id;
 $subtitle="Using data at 1 minute intervals";
-$headers='
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
-<script language="javascript" type="text/javascript" src="jquery.dataTables.min.js"></script>
-<link rel="stylesheet" href="jquery.dataTables.min.css" type="text/css"/>';
+$headers='<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>';
 $deviceInfo=getDeviceInfo($station_id,$db);
 $head=$title=$deviceInfo["displayName"];
 require "rdHead.php";

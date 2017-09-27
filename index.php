@@ -10,7 +10,7 @@ if ( 0==authPublic($station_id,$db) ) {
 		if(authSerialNumber($_SESSION['username'],$station_id,$db) < 0){
 			$docRoot = $_SERVER["DOCUMENT_ROOT"];
 	
-			header("Location:/login.php", true);
+			header("Location: /login.php", true);
 		}
 }
 
@@ -69,7 +69,7 @@ require_once "rdHead.php";
 	</div>
 	<div class="line">
 		<div title="Click here to view Battery Graph" class="vert-align-bottom battBlock" id="image" >
-			<img id="battImg" src="battery.png" alt="battery" title="Shows the data logger's battery state of charge according to the last packet received" />
+			<img id="battImg" src="res/battery.png" alt="battery" title="Shows the data logger's battery state of charge according to the last packet received" />
      			<h2 id="batt_charge">Loading</h2>
 		</div>
 		<div title="Click here to view Battery Graph" class="vert-align-bottom battBlock">
@@ -78,7 +78,7 @@ require_once "rdHead.php";
 			<span>Max Today:<span id="maxBatt" class="emph">...%</span></span>
 		</div>
 		<div class="vert-align-bottom arrowBlock">
-			<img id="arrow" src="arrow.png" alt="" title="Arrow points towards direction wind is coming from." /><br />
+			<img id="arrow" src="res/arrow.png" alt="" title="Arrow points towards direction wind is coming from." /><br />
 			<span class="emph">Wind Direction</span><br />
 			<span class="small">Relative to boom</span><br />
 			<span class="small">(Up is direction boom is pointing)</span>
@@ -97,7 +97,7 @@ require_once "rdHead.php";
 			
 		</div>
 		<div class="vert-align SDBlock" id="SDImage">
-			<img src="SDCard.png" alt="" />
+			<img src="res/SDCard.png" alt="" />
      			<h2 id="cardStatus">Loading...</h2>
 		</div>
 		<div class="vert-align block">		
